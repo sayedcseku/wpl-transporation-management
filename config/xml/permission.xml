@@ -1,0 +1,309 @@
+<permissions>
+
+	<permission>
+		<id>ASSETS_C</id>
+		<name>ASSETS_C</name>
+		<category>ASSET CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ASSETS_R</id>
+		<name>ASSETS_R</name>
+		<category>ASSET CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ASSETS_U</id>
+		<name>ASSETS_U</name>
+		<category>ASSET CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ASSETS_D</id>
+		<name>ASSETS_D</name>
+		<category>ASSET CATEGORY</category>
+	</permission>
+
+	<!-- DISCUSSION CATEGORY Category -->
+	<permission>
+		<id>DISCUSSION_CAT_C</id>
+		<name>DISCUSSION_CAT_C</name>
+		<category>DISCUSSION CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_CAT_R</id>
+		<name>DISCUSSION_CAT_R</name>
+		<category>DISCUSSION CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_CAT_U</id>
+		<name>DISCUSSION_CAT_U</name>
+		<category>DISCUSSION CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_CAT_D</id>
+		<name>DISCUSSION_CAT_D</name>
+		<category>DISCUSSION CATEGORY</category>
+	</permission>
+
+	<!-- DISCUSSION Category -->
+	<permission>
+		<id>DISCUSSION_C</id>
+		<name>DISCUSSION_C</name>
+		<category>DISCUSSION</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_R</id>
+		<name>DISCUSSION_R</name>
+		<category>DISCUSSION</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_U</id>
+		<name>DISCUSSION_U</name>
+		<category>DISCUSSION</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_D</id>
+		<name>DISCUSSION_D</name>
+		<category>DISCUSSION</category>
+	</permission>
+
+
+    <!-- DISCUSSION_COMMENT Category -->
+	<permission>
+		<id>DISCUSSION_COMMENT_C</id>
+		<name>DISCUSSION_COMMENT_C</name>
+		<category>DISCUSSION COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_COMMENT_R</id>
+		<name>DISCUSSION_COMMENT_R</name>
+		<category>DISCUSSION COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_COMMENT_U</id>
+		<name>DISCUSSION_COMMENT_U</name>
+		<category>DISCUSSION COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>DISCUSSION_COMMENT_D</id>
+		<name>DISCUSSION_COMMENT_D</name>
+		<category>DISCUSSION COMMENT</category>
+	</permission>
+
+	<!-- DISCIPLINE Category -->
+	<permission>
+		<id>DISCIPLINE_C</id>
+		<name>DISCIPLINE_C</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_R</id>
+		<name>DISCIPLINE_R</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_U</id>
+		<name>DISCIPLINE_U</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_D</id>
+		<name>DISCIPLINE_D</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+
+
+	<!-- PERMISSION Category -->
+	<permission>
+		<id>PERMISSION_C</id>
+		<name>PERMISSION_C</name>
+		<category>PERMISSION</category>
+	</permission>
+
+	<permission>
+		<id>PERMISSION_R</id>
+		<name>PERMISSION_R</name>
+		<category>PERMISSION</category>
+	</permission>
+
+	<permission>
+		<id>PERMISSION_U</id>
+		<name>PERMISSION_U</name>
+		<category>PERMISSION</category>
+	</permission>
+
+	<permission>
+		<id>PERMISSION_D</id>
+		<name>PERMISSION_D</name>
+		<category>PERMISSION</category>
+	</permission>
+
+
+	<!-- POSITION Category -->
+	<permission>
+		<id>POSITION_C</id>
+		<name>POSITION_C</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_R</id>
+		<name>POSITION_R</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_U</id>
+		<name>POSITION_U</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_D</id>
+		<name>POSITION_D</name>
+		<category>POSITION</category>
+	</permission>
+
+
+
+	<!-- ROLE Category -->
+	<permission>
+		<id>ROLE_C</id>
+		<name>ROLE_C</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_R</id>
+		<name>ROLE_R</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_U</id>
+		<name>ROLE_U</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_D</id>
+		<name>ROLE_D</name>
+		<category>ROLE</category>
+	</permission>
+
+
+	<!-- SCHOOL Category -->
+	<permission>
+		<id>SCHOOL_C</id>
+		<name>SCHOOL_C</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_R</id>
+		<name>SCHOOL_R</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_U</id>
+		<name>SCHOOL_U</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_D</id>
+		<name>SCHOOL_D</name>
+		<category>SCHOOL</category>
+	</permission>
+
+
+	<!-- TERM Category -->
+	<permission>
+		<id>TERM_C</id>
+		<name>TERM_C</name>
+		<category>TERM</category>
+	</permission>
+
+	<permission>
+		<id>TERM_R</id>
+		<name>TERM_R</name>
+		<category>TERM</category>
+	</permission>
+
+	<permission>
+		<id>TERM_U</id>
+		<name>TERM_U</name>
+		<category>TERM</category>
+	</permission>
+
+	<permission>
+		<id>TERM_D</id>
+		<name>TERM_D</name>
+		<category>TERM</category>
+	</permission>
+
+
+	<!-- USER Category -->
+	<permission>
+		<id>USER_C</id>
+		<name>USER_C</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_R</id>
+		<name>USER_R</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_U</id>
+		<name>USER_U</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_D</id>
+		<name>USER_D</name>
+		<category>USER</category>
+	</permission>
+
+	<!-- Year Category -->
+	<permission>
+		<id>YEAR_C</id>
+		<name>YEAR_C</name>
+		<category>YEAR</category>
+	</permission>
+
+	<permission>
+		<id>YEAR_R</id>
+		<name>YEAR_R</name>
+		<category>YEAR</category>
+	</permission>
+
+	<permission>
+		<id>YEAR_U</id>
+		<name>YEAR_U</name>
+		<category>YEAR</category>
+	</permission>
+
+	<permission>
+		<id>YEAR_D</id>
+		<name>YEAR_D</name>
+		<category>YEAR</category>
+	</permission>
+
+
+</permissions>
