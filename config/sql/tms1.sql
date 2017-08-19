@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2017 at 05:55 PM
+-- Generation Time: Aug 19, 2017 at 05:21 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -43,12 +43,20 @@ CREATE TABLE `tbl_assets` (
   `id` int(11) NOT NULL,
   `asset_type` varchar(50) NOT NULL,
   `company_name` varchar(50) NOT NULL,
-  `isRented` varchar(5) NOT NULL DEFAULT '0',
+  `isRented` varchar(5) NOT NULL DEFAULT 'false',
   `rent_cost` int(11) DEFAULT NULL,
   `liscence_no` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `tbl_assets` CHANGE `isRented` `isRented` VARCHAR(5) NOT NULL DEFAULT 'false';
+--
+-- Dumping data for table `tbl_assets`
+--
+
+INSERT INTO `tbl_assets` (`id`, `asset_type`, `company_name`, `isRented`, `rent_cost`, `liscence_no`) VALUES
+(5, 'Bus', 'Hanif', 'true', 20000, '25X9BNM76G'),
+(6, 'Micro', 'KU', 'false', 0, '25X9BNM76G1'),
+(7, 'Jeep', 'AR Rent-a-car', 'true', 8000, '24X9B2676G');
+
 -- --------------------------------------------------------
 
 --
@@ -88,18 +96,6 @@ INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
 ('DISCIPLINE_D', 'DISCIPLINE_D', 'DISCIPLINE'),
 ('DISCIPLINE_R', 'DISCIPLINE_R', 'DISCIPLINE'),
 ('DISCIPLINE_U', 'DISCIPLINE_U', 'DISCIPLINE'),
-('DISCUSSION_C', 'DISCUSSION_C', 'DISCUSSION'),
-('DISCUSSION_CAT_C', 'DISCUSSION_CAT_C', 'DISCUSSION CATEGORY'),
-('DISCUSSION_CAT_D', 'DISCUSSION_CAT_D', 'DISCUSSION CATEGORY'),
-('DISCUSSION_CAT_R', 'DISCUSSION_CAT_R', 'DISCUSSION CATEGORY'),
-('DISCUSSION_CAT_U', 'DISCUSSION_CAT_U', 'DISCUSSION CATEGORY'),
-('DISCUSSION_COMMENT_C', 'DISCUSSION_COMMENT_C', 'DISCUSSION COMMENT'),
-('DISCUSSION_COMMENT_D', 'DISCUSSION_COMMENT_D', 'DISCUSSION COMMENT'),
-('DISCUSSION_COMMENT_R', 'DISCUSSION_COMMENT_R', 'DISCUSSION COMMENT'),
-('DISCUSSION_COMMENT_U', 'DISCUSSION_COMMENT_U', 'DISCUSSION COMMENT'),
-('DISCUSSION_D', 'DISCUSSION_D', 'DISCUSSION'),
-('DISCUSSION_R', 'DISCUSSION_R', 'DISCUSSION'),
-('DISCUSSION_U', 'DISCUSSION_U', 'DISCUSSION'),
 ('PERMISSION_C', 'PERMISSION_C', 'PERMISSION'),
 ('PERMISSION_D', 'PERMISSION_D', 'PERMISSION'),
 ('PERMISSION_R', 'PERMISSION_R', 'PERMISSION'),
@@ -265,7 +261,8 @@ INSERT INTO `tbl_user` (`ID`, `UniversityID`, `Email`, `Password`, `FirstName`, 
 ('driver_1701@test.com', 'driver_1701', 'driver_1701@test.com', '123', 'Abdur', 'Rahman', '', NULL, 0, 0),
 ('tab1701@test.com', 'tab1701', 'tab1701@test.com', '123', 'No', 'One', '', NULL, 0, 0),
 ('test1@test.com', 'test1', 'test1@test.com', '123', 'Abu', 'Sayed', 'approved', NULL, NULL, NULL),
-('test@test.com', '020201', 'test@test.com', '123', 'I AM', 'ADMIN', 'approved', NULL, NULL, NULL);
+('test@test.com', '020201', 'test@test.com', '123', 'I AM', 'ADMIN', 'approved', NULL, NULL, NULL),
+('this@test.com', 'dasd', 'this@test.com', '123', 'sdasd', 'sdasd', 'approved', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -291,7 +288,8 @@ INSERT INTO `tbl_user_details` (`ID`, `FatherName`, `MotherName`, `PermanentAddr
 ('driver_1701@test.com', NULL, NULL, NULL, NULL, NULL, NULL),
 ('tab1701@test.com', NULL, NULL, NULL, NULL, NULL, NULL),
 ('test1@test.com', NULL, NULL, NULL, NULL, NULL, NULL),
-('test@test.com', 'My father', 'My mother', 'My address', '04100000', 'Same', '0171100000');
+('test@test.com', 'My father', 'My mother', 'My address', '04100000', 'Same', '0171100000'),
+('this@test.com', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,7 +312,8 @@ INSERT INTO `tbl_user_role` (`ID`, `UserID`, `RoleID`) VALUES
 (99, 'test@test.com', 'teacher'),
 (102, 'driver_1701@test.com', 'driver'),
 (103, 'test1@test.com', 'student'),
-(104, 'tab1701@test.com', 'tabulator');
+(104, 'tab1701@test.com', 'tabulator'),
+(105, 'this@test.com', 'teacher');
 
 --
 -- Indexes for dumped tables
@@ -393,7 +392,7 @@ ALTER TABLE `routes`
 -- AUTO_INCREMENT for table `tbl_assets`
 --
 ALTER TABLE `tbl_assets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_combination`
 --
@@ -408,7 +407,7 @@ ALTER TABLE `tbl_role_permission`
 -- AUTO_INCREMENT for table `tbl_user_role`
 --
 ALTER TABLE `tbl_user_role`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- Constraints for dumped tables
 --
@@ -418,12 +417,6 @@ ALTER TABLE `tbl_user_role`
 --
 ALTER TABLE `routes`
   ADD CONSTRAINT `routes_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tbl_combination` (`route_id`);
-
---
--- Constraints for table `tbl_assets`
---
-ALTER TABLE `tbl_assets`
-  ADD CONSTRAINT `tbl_assets_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tbl_combination` (`asset_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
