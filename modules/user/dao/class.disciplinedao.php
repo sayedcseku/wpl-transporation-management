@@ -1,15 +1,15 @@
 <?php
 // write dao object for each class
-include_once './common/class.common.php';
-include_once './common/class.common.course.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once COMMON.'class.common.course.php';
+include_once UTILITY.'class.util.php';
 
 Class DisciplineDAO{
 
 	private $_DB;
 	private $_Discipline;
 
-	function DisciplineDAO(){
+	public function __construct(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_Discipline = new Discipline();
@@ -21,7 +21,7 @@ Class DisciplineDAO{
 
 		$DisciplineList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_Discipline");
+		$this->_DB->doQuery("SELECT * FROM tbl_discipline");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -38,7 +38,7 @@ Class DisciplineDAO{
 			$School->setID($row['SchoolID']);
 					
 			//get the school name
-			$this->_DB->doQuery("SELECT * FROM tbl_School where ID='".$row['SchoolID']."'");
+			$this->_DB->doQuery("SELECT * FROM tbl_school where ID='".$row['SchoolID']."'");
 			$schoolRow = $this->_DB->getTopRow();
 			$School->setName($schoolRow['Name']);
 
@@ -67,7 +67,7 @@ Class DisciplineDAO{
 		$SchoolID = $Discipline->getSchool()->getID();
 
 
-		$SQL = "INSERT INTO tbl_Discipline(ID,Name,ShortCode,SchoolID) VALUES('$ID','$Name','$ShortCode','$SchoolID')";
+		$SQL = "INSERT INTO tbl_discipline(ID,Name,ShortCode,SchoolID) VALUES('$ID','$Name','$ShortCode','$SchoolID')";
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -82,7 +82,7 @@ Class DisciplineDAO{
 	public function readDiscipline($Discipline){
 		
 		
-		$SQL = "SELECT * FROM tbl_Discipline where ID='".$Discipline->getID()."'";
+		$SQL = "SELECT * FROM tbl_discipline where ID='".$Discipline->getID()."'";
 
 		$this->_DB->doQuery($SQL);
 
@@ -100,7 +100,7 @@ Class DisciplineDAO{
 		$School = new School();
 		$School->setID($row['SchoolID']);
 
-		$this->_DB->doQuery("SELECT * FROM tbl_School where ID='".$row['SchoolID']."'");
+		$this->_DB->doQuery("SELECT * FROM tbl_school where ID='".$row['SchoolID']."'");
 		$schoolRow = $this->_DB->getTopRow();
 		$School->setName($schoolRow['Name']);
  
@@ -118,7 +118,7 @@ Class DisciplineDAO{
 	//update an Discipline object based on its 
 	public function updateDiscipline($Discipline){
 
-		$SQL = "UPDATE tbl_Discipline SET Name='".$Discipline->getName()."', 
+		$SQL = "UPDATE tbl_discipline SET Name='".$Discipline->getName()."', 
 				ShortCode='".$Discipline->getShortCode()."', 
 				SchoolID='".$Discipline->getSchool()->getID()."' 
 				WHERE ID='".$Discipline->getID()."'";
@@ -139,7 +139,7 @@ Class DisciplineDAO{
 	public function deleteDiscipline($Discipline){
 
 
-		$SQL = "DELETE from tbl_Discipline where ID ='".$Discipline->getID()."'";
+		$SQL = "DELETE from tbl_discipline where ID ='".$Discipline->getID()."'";
 	
 		$SQL = $this->_DB->doQuery($SQL);
 

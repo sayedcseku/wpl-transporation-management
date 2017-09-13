@@ -76,30 +76,54 @@ class AssetDao{
         return $Result;
 
     }
-    public function updateAsset($Asset){
-
-        $SQL = "UPDATE tbl_assets SET
-        asset_type='".$Asset->getAssetType()."',
-        company_name='".$Asset->getCompanyName()."',
-        isRented='".$Asset->getIsRented()."',
-        rent_cost='".$Asset->getRentCost()." ',
-        liscence_no='".$Asset->getLiscenceNo()." '
-        WHERE id='".$Asset->getId()."'";
-
-        //beginning a transaction
-        $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
-        //updating the user
-        $SQL = $this->_DB->doQuery($SQL);
+    public function getAsset($Asset){
 
 
-        //closing the transaction
-        $this->_DB->getConnection()->commit();
+        $Result = $this->readUserRoles($User);
+
+        if($Result->getIsSuccess()){
 
 
+            $this->_User = $Result->getResultObject();
+
+
+            $SQL = "SELECT p.ID, p.Name  FROM tbl_user u,tbl_user_Position up, tbl_Position p
+                    WHERE u.ID=up.UserID and up.PositionID=p.ID and  u.IsDeleted is null and  u.ID='".$this->_User->getID()."'";
+
+            $this->_DB->doQuery($SQL);
+
+            //reading all the rows
+            $rows = $this->_DB->getAllRows();
+
+            //setting Positions list object
+            $Positions = array();
+
+            for($i = 0; $i < sizeof($rows); $i++) {
+
+                $row = $rows[$i];
+
+                $Position = new Position();
+
+                //filling up Position information
+                $Position->setID ( $row['ID']);
+                $Position->setName ( $row['Name']);
+
+                //adding new Positions with every iteration belong to this user
+                $Positions[]=$Position;
+
+            }
+
+            //assigning Position list to the user object
+            $this->_User->setPositions($Positions);
+
+        }
+
+        //todo: LOG util with level of log
 
         $Result = new Result();
         $Result->setIsSuccess(1);
-        $Result->setResultObject($SQL);
+        $Result->setResultObject($this->_User);
+
         return $Result;
 
     }

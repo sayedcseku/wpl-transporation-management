@@ -1,15 +1,15 @@
 <?php
 // write dao object for each class
-include_once './common/class.common.php';
-include_once './common/class.common.course.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once COMMON.'class.common.course.php';
+include_once UTILITY.'class.util.php';
 
 Class SchoolDAO{
 
 	private $_DB;
 	private $_School;
-
-	function SchoolDAO(){
+	
+	public function __construct(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_School = new School();
@@ -21,7 +21,7 @@ Class SchoolDAO{
 
 		$SchoolList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_School");
+		$this->_DB->doQuery("SELECT * FROM tbl_school");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -54,7 +54,7 @@ Class SchoolDAO{
 		$Name=$School->getName();
 
 
-		$SQL = "INSERT INTO tbl_School(ID,Name) VALUES('$ID','$Name')";
+		$SQL = "INSERT INTO tbl_school(ID,Name) VALUES('$ID','$Name')";
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -69,7 +69,7 @@ Class SchoolDAO{
 	public function readSchool($School){
 		
 		
-		$SQL = "SELECT * FROM tbl_School WHERE ID='".$School->getID()."'";
+		$SQL = "SELECT * FROM tbl_school WHERE ID='".$School->getID()."'";
 		$this->_DB->doQuery($SQL);
 
 		//reading the top row for this School from the database
@@ -93,7 +93,7 @@ Class SchoolDAO{
 	//update an School object based on its 
 	public function updateSchool($School){
 
-		$SQL = "UPDATE tbl_School SET Name='".$School->getName()."' WHERE ID='".$School->getID()."'";
+		$SQL = "UPDATE tbl_school SET Name='".$School->getName()."' WHERE ID='".$School->getID()."'";
 
 
 		$SQL = $this->_DB->doQuery($SQL);
@@ -110,7 +110,7 @@ Class SchoolDAO{
 	public function deleteSchool($School){
 
 
-		$SQL = "DELETE from tbl_School where ID ='".$School->getID()."'";
+		$SQL = "DELETE from tbl_school where ID ='".$School->getID()."'";
 	
 		$SQL = $this->_DB->doQuery($SQL);
 

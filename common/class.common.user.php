@@ -10,8 +10,8 @@ class User{
     private $_LastName;
     private $_Status;
     private $_IsLogged;
-    private $_IsArchived=0;
-    private $_IsDeleted=0;
+    private $_IsArchived;
+    private $_IsDeleted;
     private $_Roles;
     private $_Positions;
 

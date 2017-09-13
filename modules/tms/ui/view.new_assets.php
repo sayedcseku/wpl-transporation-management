@@ -8,25 +8,6 @@ include_once './common/class.common.php';
 
 <div class="panel panel-default">
 
-	<script type="text/javascript">
-
-
-
-		function validatePassword(){
-
-		var password = document.getElementById("txtPassword");
-		var confirm_password = document.getElementById("txtConfirmPassword");
-
-
-		  if(password.value != confirm_password.value) {
-		    confirm_password.setCustomValidity("Passwords Don't Match");
-		  } else {
-		    confirm_password.setCustomValidity('');
-		  }
-		}
-
-
-	</script>
 
     <div class="panel-heading"> New Asset</div>
 
@@ -38,7 +19,20 @@ include_once './common/class.common.php';
 			<div class="form-group">
               	<label class="control-label col-sm-4" for="assetType">Asset Type:</label>
               	<div class="col-sm-6">
-              	<input type="text" name="assetType" class="form-control" placeholder="Asset Identity"/>
+					<?php
+  				  if(isset($_GET['edit'])){
+  				  ?>
+  				  <input type="text" name="assetType" class="form-control" placeholder="Asset Identity" value="<?php
+  					if(isset($_GET['edit'])) echo $globalUser->getAssetType();  ?>/>
+
+  				<?php
+  				}
+  				else {
+
+  				?>
+  					 <input type="text" name="assetType" class="form-control" placeholder="Asset Identity"/>
+  				<?php } ?>
+
 			  	</div>
 			</div>
 

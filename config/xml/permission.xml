@@ -20,7 +20,7 @@
 		<name>ASSETS_D</name>
 		<category>ASSET CATEGORY</category>
 	</permission>
-
+	
 	<!-- DISCUSSION CATEGORY Category -->
 	<permission>
 		<id>DISCUSSION_CAT_C</id>
@@ -120,6 +120,32 @@
 		<id>DISCIPLINE_D</id>
 		<name>DISCIPLINE_D</name>
 		<category>DISCIPLINE</category>
+	</permission>
+
+	<!--Hall Category -->
+
+	<permission>
+		<id>HALL_C</id>
+		<name>HALL_C</name>
+		<category>HALL</category>
+	</permission>
+
+	<permission>
+		<id>HALL_R</id>
+		<name>HALL_R</name>
+		<category>HALL</category>
+	</permission>
+
+	<permission>
+		<id>HALL_U</id>
+		<name>HALL_U</name>
+		<category>HALL</category>
+	</permission>
+
+	<permission>
+		<id>HALL_D</id>
+		<name>HALL_D</name>
+		<category>HALL</category>
 	</permission>
 
 

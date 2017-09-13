@@ -1,6 +1,6 @@
 <?php
 
-include_once '/../common/class.common.php';
+include_once COMMON.'class.common.php';
 
 
 
@@ -15,7 +15,7 @@ class XMLtoPermission{
     var $_parsed;
     private $_DB;
 
-    function __construct($fileToRead){
+    public function __construct($fileToRead){
         
         $this->_filename = $fileToRead;       
     }
@@ -116,7 +116,7 @@ class XMLtoMenuUtil{
     private $_Menus;
     private $_OrganizedMenus;
   
-    private function __construct($fileToRead='./config/xml/menu.xml'){
+    private function __construct($fileToRead=CONFIG.'xml/menu.xml'){
         
         $this->_FileName = $fileToRead;       
     }

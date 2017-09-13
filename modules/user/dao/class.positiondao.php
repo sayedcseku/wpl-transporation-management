@@ -1,14 +1,14 @@
 <?php
 // write dao object for each class
-include_once './common/class.common.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once UTILITY.'class.util.php';
 
 Class PositionDAO{
 
 	private $_DB;
 	private $_Position;
 
-	function PositionDAO(){
+	public function __construct(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_Position = new Position();
@@ -20,7 +20,7 @@ Class PositionDAO{
 
 		$PositionList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_Position order by Name ASC");
+		$this->_DB->doQuery("SELECT * FROM tbl_position order by Name ASC");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -53,7 +53,7 @@ Class PositionDAO{
 		$Name=$Position->getName();
 
 
-		$SQL = "INSERT INTO tbl_Position(ID,Name) VALUES('$ID','$Name')";
+		$SQL = "INSERT INTO tbl_position(ID,Name) VALUES('$ID','$Name')";
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -68,7 +68,7 @@ Class PositionDAO{
 	public function readPosition($Position){
 		
 		
-		$SQL = "SELECT * FROM tbl_Position WHERE ID='".$Position->getID()."'";
+		$SQL = "SELECT * FROM tbl_position WHERE ID='".$Position->getID()."'";
 		$this->_DB->doQuery($SQL);
 
 		//reading the top row for this Position from the database
@@ -92,7 +92,7 @@ Class PositionDAO{
 	//update an Position object based on its 
 	public function updatePosition($Position){
 
-		$SQL = "UPDATE tbl_Position SET Name='".$Position->getName()."' WHERE ID='".$Position->getID()."'";
+		$SQL = "UPDATE tbl_position SET Name='".$Position->getName()."' WHERE ID='".$Position->getID()."'";
 
 
 		$SQL = $this->_DB->doQuery($SQL);
@@ -109,7 +109,7 @@ Class PositionDAO{
 	public function deletePosition($Position){
 
 
-		$SQL = "DELETE from tbl_Position where ID ='".$Position->getID()."'";
+		$SQL = "DELETE from tbl_position where ID ='".$Position->getID()."'";
 	
 		$SQL = $this->_DB->doQuery($SQL);
 

@@ -1,7 +1,7 @@
 <?php
 
-include_once './util/class.util.php';
-include_once '/../dao/class.disciplinedao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'dao/class.disciplinedao.php';
 
 
 /*
@@ -12,7 +12,7 @@ Class DisciplineBAO{
 	private $_DB;
 	private $_DisciplineDAO;
 
-	function DisciplineBAO(){
+	public function __construct(){
 
 		$this->_DisciplineDAO = new DisciplineDAO();
 

@@ -1,8 +1,8 @@
 <?php
 
-include_once './util/class.util.php';
-include_once '/../../bao/class.disciplinebao.php';
-include_once '/../../bao/class.schoolbao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'bao/class.disciplinebao.php';
+include_once MODULES_USER.'bao/class.schoolbao.php';
 
 
 $_SchoolBAO = new SchoolBAO();

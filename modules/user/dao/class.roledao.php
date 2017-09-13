@@ -1,7 +1,7 @@
 <?php
 // write dao object for each class
-include_once './common/class.common.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once UTILITY.'class.util.php';
 
 Class RoleDAO{
 
@@ -9,7 +9,7 @@ Class RoleDAO{
 	private $_Role;
 	private $_Permission;
 
-	function RoleDAO(){
+	public function __construct(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_Role = new Role();
@@ -22,7 +22,7 @@ Class RoleDAO{
 
 		$RoleList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_Role order by Name ASC");
+		$this->_DB->doQuery("SELECT * FROM tbl_role order by Name ASC");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -54,7 +54,7 @@ Class RoleDAO{
 
 		$PermissionList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_Permission order by Category ASC");
+		$this->_DB->doQuery("SELECT * FROM tbl_permission order by Category ASC");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -87,7 +87,7 @@ Class RoleDAO{
 		$Name=$Role->getName();
 
 
-		$SQL = "INSERT INTO tbl_Role(ID,Name) VALUES('$ID','$Name')";
+		$SQL = "INSERT INTO tbl_role(ID,Name) VALUES('$ID','$Name')";
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -105,14 +105,14 @@ Class RoleDAO{
 		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
 		//deleting previously assigned all the permissions from this role
-		$SQL = "DELETE from tbl_Role_Permission where RoleID ='".$Role->getID()."'";
+		$SQL = "DELETE from tbl_role_permission where RoleID ='".$Role->getID()."'";
 		$SQL = $this->_DB->doQuery($SQL);
 
 		//now assigning new permissions to this role
 		foreach ($Permissions as $Permission) {
 	
 			//assigning a permission to a role
-			$SQL = "INSERT INTO tbl_Role_Permission(RoleID,PermissionID) 
+			$SQL = "INSERT INTO tbl_role_permission(RoleID,PermissionID) 
 											VALUES('".$Role->getID()."','".$Permission->getID()."')";							
 
 			$SQL = $this->_DB->doQuery($SQL);		
@@ -132,7 +132,7 @@ Class RoleDAO{
 	public function readRole($Role){
 		
 		
-		$SQL = "SELECT * FROM tbl_Role WHERE ID='".$Role->getID()."'";
+		$SQL = "SELECT * FROM tbl_role WHERE ID='".$Role->getID()."'";
 		$this->_DB->doQuery($SQL);
 
 		//reading the top row for this Role from the database
@@ -166,7 +166,7 @@ Class RoleDAO{
 			$this->_Role = $Result->getResultObject();
 
 					
-			$SQL = "SELECT p.ID, p.Name,p.Category  FROM tbl_Role_Permission rp, tbl_Permission p 
+			$SQL = "SELECT p.ID, p.Name,p.Category  FROM tbl_role_permission rp, tbl_permission p 
 					WHERE  rp.PermissionID=p.ID and rp.RoleID='".$Role->getID()."'";
 			
 			$this->_DB->doQuery($SQL);
@@ -212,7 +212,7 @@ Class RoleDAO{
 	//update an Role object based on its 
 	public function updateRole($Role){
 
-		$SQL = "UPDATE tbl_Role SET Name='".$Role->getName()."' WHERE ID='".$Role->getID()."'";
+		$SQL = "UPDATE tbl_role SET Name='".$Role->getName()."' WHERE ID='".$Role->getID()."'";
 
 
 		$SQL = $this->_DB->doQuery($SQL);
@@ -229,7 +229,7 @@ Class RoleDAO{
 	public function deleteRole($Role){
 
 
-		$SQL = "DELETE from tbl_Role where ID ='".$Role->getID()."'";
+		$SQL = "DELETE from tbl_role where ID ='".$Role->getID()."'";
 	
 		$SQL = $this->_DB->doQuery($SQL);
 

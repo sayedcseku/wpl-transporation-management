@@ -1,7 +1,8 @@
 <?php
 
 include_once 'blade/view.user.blade.php';
-include_once './common/class.common.php';
+include_once COMMON.'class.common.php';
+
 
 ?>
 
@@ -88,7 +89,41 @@ include_once './common/class.common.php';
 							?>	
 				</div>
 			</div>
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="assignedPositions">Assigned Positions:
+              	</label>
+              	<div class="col-sm-6">		
 			
+						    <?php
+						    // this block of code prints the list box of Positions with current assigned  Positions
+
+						    $var = '<select name="assignedPositions[]" class="form-control" id="select-from-positions" multiple>';
+							$Result = $_PositionBAO->getAllPositions();
+								//if DAO access is successful to load all the Positions then show them one by one
+							if($Result->getIsSuccess()){
+
+								$Positions = $Result->getResultObject();
+							
+						       for ($i=0; $i < sizeof($Positions); $i++) { 
+						       		
+						       		$Position = $Positions[$i];
+						    
+						    		$var = $var. '<option value="'.$Position->getID().'"';   			
+
+						       		if(isset($_GET['edit']) && isPositionAvailable($Position,$globalUser->getPositions())) {
+						          		$var = $var.' selected="selected"';
+						          	} 
+
+						          	$var = $var.'>'.$Position->getName().'</option>';
+					
+								}
+
+								$var = $var.'</select>';
+							}
+							echo $var;
+							?>	
+				</div>
+			</div>
 	        <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-10">
     

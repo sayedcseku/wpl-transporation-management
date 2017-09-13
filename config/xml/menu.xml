@@ -165,90 +165,226 @@
 				</Permissions>
 			</Menu>
 
+<!-- Student Center -->
+
 	<Menu>
 		<ParentMenu></ParentMenu>
-		<Title>Transport Management</Title>
+		<Title>Student Center</Title>
 		<Permissions>
-			<Permission>USER_R</Permission>
+			<Permission>DISCUSSION_C</Permission>
+			<Permission>DISCUSSION_R</Permission>
+			<Permission>DISCUSSION_U</Permission>
+			<Permission>DISCUSSION_D</Permission>
+			<Permission>DISCUSSION_CAT_C</Permission>
+			<Permission>DISCUSSION_CAT_R</Permission>
+			<Permission>DISCUSSION_CAT_U</Permission>
+			<Permission>DISCUSSION_CAT_D</Permission>
 		</Permissions>
 	</Menu>
+
+		<Menu>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Discussion Topic</Title>
+			<Permissions>
+				<Permission>DISCUSSION_C</Permission>
+				<Permission>DISCUSSION_R</Permission>
+				<Permission>DISCUSSION_U</Permission>
+				<Permission>DISCUSSION_D</Permission>
+				<Permission>DISCUSSION_CAT_C</Permission>
+				<Permission>DISCUSSION_CAT_U</Permission>
+				<Permission>DISCUSSION_CAT_D</Permission>
+			</Permissions>
+		</Menu>
 			<Menu>
-				<ParentMenu>Transport Management</ParentMenu>
-				<Title>ASSET CATEGORY</Title>
-				<!--<Link>new_asset.php</Link>-->
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Manage Discussion Category</Title>
+				<Link>discussion_category.php</Link>
 				<Permissions>
-					<Permission>USER_R</Permission>
-					<Permission>ASSETS_C</Permission>
-					<Permission>ASSETS_R</Permission>
-					<Permission>ASSETS_U</Permission>
-					<Permission>ASSETS_D</Permission>
+					<Permission>DISCUSSION_CAT_C</Permission>
+					<Permission>DISCUSSION_CAT_U</Permission>
+					<Permission>DISCUSSION_CAT_D</Permission>
 				</Permissions>
 			</Menu>
-				<Menu>
-					<ParentMenu>ASSET CATEGORY</ParentMenu>
-					<Title>ADD ASSET</Title>
-					<Link>new_asset.php</Link>
-					<Permissions>
-						<Permission>USER_R</Permission>
-						<Permission>ASSETS_C</Permission>
-						<Permission>ASSETS_R</Permission>
-						<Permission>ASSETS_U</Permission>
-						<Permission>ASSETS_D</Permission>
-					</Permissions>
-				</Menu>
 
-				<Menu>
-					<ParentMenu>ASSET CATEGORY</ParentMenu>
-					<Title>All Assets</Title>
-					<Link>assets.php</Link>
-					<Permissions>
-						<Permission>USER_R</Permission>
-						<Permission>ASSETS_C</Permission>
-						<Permission>ASSETS_R</Permission>
-						<Permission>ASSETS_U</Permission>
-						<Permission>ASSETS_D</Permission>
-					</Permissions>
-				</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Manage Discussion</Title>
+				<Link>discussion.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
 
-				<Menu>
-					<ParentMenu>Transport Management</ParentMenu>
-					<Title>Route category</Title>
-					<Permissions>
-						<Permission>USER_R</Permission>
-						<Permission>ASSETS_C</Permission>
-						<Permission>ASSETS_R</Permission>
-						<Permission>ASSETS_U</Permission>
-						<Permission>ASSETS_D</Permission>
-					</Permissions>
-				</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Search Discussion</Title>
+				<Link>discussion_search.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Answered Discussion</Title>
+				<Link>discussion_answered.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Unanswered Discussion</Title>
+				<Link>discussion_unanswered.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Recent Discussion</Title>
+				<Link>discussion_recent.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Discussion List</Title>
+				<Link>discussion_list.php</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
 
-				<Menu>
-					<ParentMenu>Route category</ParentMenu>
-					<Title>CREATE Route</Title>
-					<Link></Link>
-					<Permissions>
-						<Permission>USER_R</Permission>
-						<Permission>ASSETS_C</Permission>
-						<Permission>ASSETS_R</Permission>
-						<Permission>ASSETS_U</Permission>
-						<Permission>ASSETS_D</Permission>
-					</Permissions>
-				</Menu>
-				<Menu>
-					<ParentMenu>Route category</ParentMenu>
-					<Title>Assign Route to Asset</Title>
-					<Link></Link>
-					<Permissions>
-						<Permission>USER_R</Permission>
-						<Permission>ASSETS_C</Permission>
-						<Permission>ASSETS_R</Permission>
-						<Permission>ASSETS_U</Permission>
-						<Permission>ASSETS_D</Permission>
-					</Permissions>
-				</Menu>
+<!-- Hall -->
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>Hall Management</Title>
+		<Permissions>
+			<Permission>HALL_C</Permission>
+			<Permission>HALL_U</Permission>
+			<Permission>HALL_D</Permission>
+		</Permissions>
+	</Menu>
+		<Menu>
+			<ParentMenu>Hall Management</ParentMenu>
+			<Title>Hall Related</Title>
+			<Permissions>
+				<Permission>HALL_C</Permission>
+				<Permission>HALL_U</Permission>
+				<Permission>HALL_D</Permission>
+			</Permissions>
+		</Menu>
 
+			<Menu>
+				<ParentMenu>Hall Related</ParentMenu>
+				<Title>Manage Hall</Title>
+				<Link>hall.php</Link>
+				<Permissions>
+					<Permission>HALL_C</Permission>
+					<Permission>HALL_U</Permission>
+					<Permission>HALL_D</Permission>
+				</Permissions>
+			</Menu>
 
+			<!-- Transport -->
+			<Menu>
+				<ParentMenu></ParentMenu>
+				<Title>Transport</Title>
+				<Permissions>
+					<Permission>USER_R</Permission>
+				</Permissions>
+			</Menu>
+					<Menu>
+						<ParentMenu>Transport</ParentMenu>
+						<Title>ASSET CATEGORY</Title>
+						<!--<Link>new_asset.php</Link>-->
+						<Permissions>
+							<Permission>USER_R</Permission>
+							<Permission>ASSETS_C</Permission>
+							<Permission>ASSETS_R</Permission>
+							<Permission>ASSETS_U</Permission>
+							<Permission>ASSETS_D</Permission>
+						</Permissions>
+					</Menu>
+						<Menu>
+							<ParentMenu>ASSET CATEGORY</ParentMenu>
+							<Title>ADD ASSET</Title>
+							<Link>new_asset.php</Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
 
+						<Menu>
+							<ParentMenu>ASSET CATEGORY</ParentMenu>
+							<Title>All Assets</Title>
+							<Link>assets.php</Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
 
+						<Menu>
+							<ParentMenu>Transport</ParentMenu>
+							<Title>Route category</Title>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
+
+						<Menu>
+							<ParentMenu>Route category</ParentMenu>
+							<Title>CREATE Route</Title>
+							<Link></Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
+						<Menu>
+							<ParentMenu>Route category</ParentMenu>
+							<Title>Assign Route to Asset</Title>
+							<Link></Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
 
 </Menus>

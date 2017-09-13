@@ -1,9 +1,9 @@
 <?php
 
-include_once './util/class.util.php';
-include_once '/../../bao/class.userbao.php';
-include_once '/../../bao/class.rolebao.php';
-include_once '/../../bao/class.positionbao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'bao/class.userbao.php';
+include_once MODULES_USER.'bao/class.rolebao.php';
+include_once MODULES_USER.'bao/class.positionbao.php';
 
 
 $_UserBAO = new UserBAO();

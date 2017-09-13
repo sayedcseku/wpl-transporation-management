@@ -1,7 +1,7 @@
 <?php
 
-include_once './util/class.util.php';
-include_once '/../dao/class.roledao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'dao/class.roledao.php';
 
 
 /*
@@ -12,7 +12,7 @@ Class RoleBAO{
 	private $_DB;
 	private $_RoleDAO;
 
-	function RoleBAO(){
+	public function __construct(){
 
 		$this->_RoleDAO = new RoleDAO();
 

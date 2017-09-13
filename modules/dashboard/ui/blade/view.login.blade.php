@@ -1,8 +1,8 @@
 <?php
 
-include_once './util/class.xml.php';
-include_once './util/class.util.php';
-include_once './modules/user/bao/class.userbao.php';
+include_once UTILITY.'class.xml.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'bao/class.userbao.php';
 
 
 $_UserBAO = new UserBAO();

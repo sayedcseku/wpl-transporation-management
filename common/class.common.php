@@ -11,7 +11,7 @@ class PermissionXML{
 
     //map the tag, value pair with the members serially
     //used in xml to permission mapping
-    function PermissionXML ($row) {
+    public function __construct($row) {
 
         //todo: check for the exception situation
 
@@ -104,6 +104,29 @@ class Result{
 
 class PermissionUtil{
 
+
+    public static $DISCUSSION_C='DISCUSSION_C';
+    public static $DISCUSSION_R='DISCUSSION_R';
+    public static $DISCUSSION_U='DISCUSSION_U';
+    public static $DISCUSSION_D='DISCUSSION_D';
+
+    public static $DISCUSSION_CAT_C='DISCUSSION_CAT_C';
+    public static $DISCUSSION_CAT_R='DISCUSSION_CAT_R';
+    public static $DISCUSSION_CAT_U='DISCUSSION_CAT_U';
+    public static $DISCUSSION_CAT_D='DISCUSSION_CAT_D';
+
+    public static $DISCUSSION_COMMENT_C='DISCUSSION_COMMENT_C';
+    public static $DISCUSSION_COMMENT_R='DISCUSSION_COMMENT_R';
+    public static $DISCUSSION_COMMENT_U='DISCUSSION_COMMENT_U';
+    public static $DISCUSSION_COMMENT_D='DISCUSSION_COMMENT_D';
+
+
+    public static $HALL_C='HALL_C';
+    public static $HALL_R='HALL_R';
+    public static $HALL_U='HALL_U';
+    public static $HALL_D='HALL_D';
+
+
     public static $POSITION_C='POSITION_C';
     public static $POSITION_R='POSITION_R';
     public static $POSITION_U='POSITION_U';
@@ -145,6 +168,16 @@ class PermissionUtil{
 
 class PageUtil{
 
+    public static $DISCUSSION_CAT='discussion_category.php';
+    public static $DISCUSSION='discussion.php';
+    public static $DISCUSSION_COMMENT='discussion_comment.php';
+    public static $DISCUSSION_SEARCH='discussion_search.php';
+    public static $DISCUSSION_ANSWERED='discussion_answered.php';
+    public static $DISCUSSION_UNANSWERED='discussion_unanswered.php';
+    public static $DISCUSSION_LIST='discussion_list.php';
+    public static $DISCUSSION_RECENT='discussion_recent.php';
+
+    public static $HALL='hall.php';
 
     public static $ERROR='error.php';
     public static $HOME='home.php';
@@ -166,7 +199,6 @@ class PageUtil{
     public static $USER_SEARCH='user_search.php';
     public static $USER_FORGOT_PASSWORD='forgot_password.php';
 
-
     public static $ASSET_NEW = 'new_asset.php';
     public static $ASSETS = 'assets.php';
 
@@ -181,39 +213,48 @@ class RouteUtil{
     private static $s_instance; //The single instance
 
 
-    private function RouteUtil(){
+   private function __construct(){
 
          self::$s_Routes = array();
 
         //add new page and routing address here always
 
+         self::$s_Routes[PageUtil::$DISCUSSION_CAT]  =  "modules/forum/ui/view.discussionCategory.php";
+         self::$s_Routes[PageUtil::$DISCUSSION]      =  "modules/forum/ui/view.discussion.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_COMMENT] = "modules/forum/ui/view.comment.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_LIST]   = "modules/forum/ui/view.discussionList.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_SEARCH]   = "modules/forum/ui/view.searchDiscussion.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_RECENT]  = "modules/forum/ui/view.mostRecent.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_ANSWERED]  = "modules/forum/ui/view.answered.php";
+         self::$s_Routes[PageUtil::$DISCUSSION_UNANSWERED]  = "modules/forum/ui/view.unanswered.php";
 
 
-         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dashboard/ui/view.home.php";
-         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dashboard/ui/view.login.php";
+         self::$s_Routes[PageUtil::$HALL]  = "modules/hall/ui/view.hall.php";
 
-         self::$s_Routes[PageUtil::$ROLE]   =   "/modules/user/ui/view.role.php";
-         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/user/ui/view.discipline.php";
-         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/user/ui/view.permission.php";
-         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/user/ui/view.position.php";
-         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/user/ui/view.school.php";
+         self::$s_Routes[PageUtil::$HOME]             =   "modules/dashboard/ui/view.home.php";
+         self::$s_Routes[PageUtil::$LOGIN]            =   "modules/dashboard/ui/view.login.php";
+
+         self::$s_Routes[PageUtil::$ROLE]   =   "modules/user/ui/view.role.php";
+         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "modules/user/ui/view.discipline.php";
+         self::$s_Routes[PageUtil::$PERMISSION]       =   "modules/user/ui/view.permission.php";
+         self::$s_Routes[PageUtil::$POSITION]         =   "modules/user/ui/view.position.php";
+         self::$s_Routes[PageUtil::$SCHOOL]           =   "modules/user/ui/view.school.php";
 
 
 
-         self::$s_Routes[PageUtil::$USER] =   "/modules/user/ui/view.user.php";
-         self::$s_Routes[PageUtil::$USER_DETAILS] =   "/modules/user/ui/view.user_details.php";
-         self::$s_Routes[PageUtil::$USER_NEW] =   "/modules/user/ui/view.user_new.php";
-         self::$s_Routes[PageUtil::$USER_SEARCH] =   "/modules/user/ui/view.user_search.php";
-         self::$s_Routes[PageUtil::$USER_FORGOT_PASSWORD] =   "/modules/user/ui/view.forgot_password.php";
-
+         self::$s_Routes[PageUtil::$USER] =   "modules/user/ui/view.user.php";
+         self::$s_Routes[PageUtil::$USER_DETAILS] =   "modules/user/ui/view.user_details.php";
+         self::$s_Routes[PageUtil::$USER_NEW] =   "modules/user/ui/view.user_new.php";
+         self::$s_Routes[PageUtil::$USER_SEARCH] =   "modules/user/ui/view.user_search.php";
+         self::$s_Routes[PageUtil::$USER_FORGOT_PASSWORD] =   "modules/user/ui/view.forgot_password.php";
 
          self::$s_Routes[PageUtil::$ASSET_NEW] =   "/modules/tms/ui/view.new_assets.php";
          self::$s_Routes[PageUtil::$ASSETS] =   "/modules/tms/ui/view.assets.php";
 
-
-
         //the page not found will redirect to error page
-         self::$s_Routes[PageUtil::$ERROR] = "/modules/dashboard/ui/view.error.php";
+         self::$s_Routes[PageUtil::$ERROR] = "modules/dashboard/ui/view.error.php";
+
+
 
 
     }
@@ -247,7 +288,7 @@ class MiddlewareUtil{
     private static $s_instance; //The single instance
 
 
-    private function MiddlewareUtil(){
+    private function __construct(){
 
          self::$s_Routes = array();
 
@@ -259,12 +300,15 @@ class MiddlewareUtil{
          self::$s_Routes[PageUtil::$USER]   =  PageUtil::$LOGIN ;
          self::$s_Routes[PageUtil::$USER_DETAILS]   =  PageUtil::$LOGIN ;
 
+         self::$s_Routes[PageUtil::$HALL]   =  PageUtil::$LOGIN ;
+
          self::$s_Routes[PageUtil::$ROLE]   =  PageUtil::$LOGIN ;
          self::$s_Routes[PageUtil::$PERMISSION]   =  PageUtil::$LOGIN ;
 
 
          self::$s_Routes[PageUtil::$DISCIPLINE]   =  PageUtil::$LOGIN ;
-         self::$s_Routes[PageUtil::$ASSET_NEW]   =  PageUtil::$LOGIN ;
+
+          self::$s_Routes[PageUtil::$ASSET_NEW]   =  PageUtil::$LOGIN ;
 
     }
 

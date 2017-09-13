@@ -1,7 +1,7 @@
 <?php
 
-include_once './util/class.util.php';
-include_once '/../../bao/class.rolebao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_USER.'bao/class.rolebao.php';
 
 
 $_RoleBAO = new RoleBAO();

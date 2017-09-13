@@ -26,7 +26,7 @@ if(isset($_GET['edit']))
 {
 	$Asset = new Asset();
 	$Asset->setId($_GET['edit']);
-	$globalUser = $_AssetBao->getAllAsset($Asset)->getResultObject(); //reading the user object from the result object
+	$globalUser = $_AssetBao->getAsset($Asset)->getResultObject(); //reading the user object from the result object
 }
 
 /*updating an existing user information*/

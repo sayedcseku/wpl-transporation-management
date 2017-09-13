@@ -14,7 +14,7 @@ interface I_DBConfig{
 }
 
 interface I_LogConfig{
-
+	
 	public function isLogEnabled();
 	public function getLogLevel();
 
@@ -54,12 +54,12 @@ class ConfigUtil implements I_DBConfig, I_LogConfig, I_LanguageConfig{
 	private $_username;
 	private $_password;
 	private $_database;
-
+	
 	private $_log_enabled=false;
 	private $_log_level="info";
 	private $_log_file_path;
 
-	private $_lang_default="EN";
+	private $_lang_default="en";
 
 
 	private function __construct(){
@@ -88,17 +88,17 @@ class ConfigUtil implements I_DBConfig, I_LogConfig, I_LanguageConfig{
 	*/
 	private function readConfig(){
 
-		$this->_ini_array = parse_ini_file("./config/system.ini");
+		$this->_ini_array = parse_ini_file(CONFIG.'system.ini');
 
 		$this->_host =	$this->_ini_array['db_host'];
 		$this->_username = $this->_ini_array['db_username'];
 		$this->_password = $this->_ini_array['db_password'];
 		$this->_database = $this->_ini_array['db_database'];
-
+	
 		$this->_log_enabled=$this->_ini_array['log_enabled'];
 		$this->_log_level=$this->_ini_array['log_level'];
 		$this->_log_file_path=$this->_ini_array['log_path'];
-
+	
 
 		$this->_lang_default=$this->_ini_array['lang_default'];
 
@@ -144,9 +144,9 @@ class ConfigUtil implements I_DBConfig, I_LogConfig, I_LanguageConfig{
 
 	public function getLogFilePath(){
 
-		return $this->_log_file_path;
+		return $this->_log_file_path; 
 	}
-
+	
 
 	// give the default language EN, BN, FN etc
 	public function getDefaultLanguage(){
@@ -160,7 +160,7 @@ class ConfigUtil implements I_DBConfig, I_LogConfig, I_LanguageConfig{
 /*
 * Mysql Database class - only one connection alowed
 * provide interface to do query on the mysql database
-*
+* 
 */
 class DBUtil implements I_DBUtil {
 	private static $s_instance; //The single instance
@@ -202,9 +202,9 @@ class DBUtil implements I_DBUtil {
 
 	// Creating the database connection using mysqli
 	private function setConnection(){
-		$this->_connection = new mysqli($this->_host, $this->_username,
+		$this->_connection = new mysqli($this->_host, $this->_username, 
 			$this->_password, $this->_database);
-
+	
 		// Error handling
 		if(mysqli_connect_error()) {
 			trigger_error("Failed to conencto to MySQL: " . mysqli_connect_error(),
@@ -225,32 +225,32 @@ class DBUtil implements I_DBUtil {
 	// Sends the query to the connection
 	public function doQuery($sql) {
 
-		$this->_result = $this->_connection->query($sql) or die(mysqli_error($this->_result));
+		$this->_result = $this->_connection->query($sql) or die(mysqli_error($this->_result));		
 		return $this->_result;
 
 	}
-
+	
 	// Return the number of rows
 	public function getNumRows() {
 		$this->_numRows = mysqli_num_rows($this->_result);
 		return $this->_numRows;
 	}
-
+	
 	// Fetches all the rows and return them as one array(array())
 	public function getAllRows() {
 		$rows = array();
-
+		
 		for($x = 0; $x < $this->getNumRows(); $x++) {
 			$rows[] = mysqli_fetch_assoc($this->_result);
 		}
 		return $rows;
 	}
-
+	
 	// fetch the top row from the result
 	public function getTopRow() {
 		return $this->_result->fetch_array();
 	}
-
+	
 	// Securing input data
 	public function secureInput($value) {
 		$value=trim($value);
@@ -279,7 +279,7 @@ class Util{
 	        return $uuid;
 	    }
 	}
-
+	
 }
 
 class LogUtil{
@@ -324,7 +324,7 @@ class LogUtil{
 		$this->_log_enabled = $_config->isLogEnabled();
 		$this->_log_level = $_config->getLogLevel();
 		$this->_log_file_path = $_config->getLogFilePath();
-
+	
 	}
 
 	//opening a flile
@@ -332,7 +332,7 @@ class LogUtil{
 
 		//$this->make_path($this->_log_file_path);
 		$this->_log_file = fopen($this->_log_file_path, 'a') or die("can't create log file: ".$this->_log_file_path);
-
+		
 
 	}
 
@@ -364,8 +364,8 @@ class LogUtil{
 		    						$this->printMessage($level,$msg);
 		        					break;
 		    					}
-
-
+		    							
+			        
 		    case self::$DEBUG:	if(!strcmp($this->_log_level,self::$WARN)||
 		    						!strcmp($this->_log_level,self::$ERROR)){
 		    						break;
@@ -373,14 +373,14 @@ class LogUtil{
 		    					else{
 		    						$this->printMessage($level,$msg);
 		        					break;
-		    					}
+		    					}		        
 		    case self::$WARN:	if(!strcmp($this->_log_level,self::$ERROR)){
 		    						break;
 		    					}
 		    					else{
 		    						$this->printMessage($level,$msg);
 		        					break;
-		    					}
+		    					}		        
 		    case self::$ERROR:
 		    					$this->printMessage($level,$msg);
 		        				break;
@@ -427,7 +427,7 @@ class LogUtil{
 	function __destruct() {
        // Close log file
 			fclose($this->_log_file);
-
+	
    }
 
 
@@ -466,7 +466,7 @@ class LangUtil{
 		//getting the default language text
 		$this->_lang_default = $_config->getDefaultLanguage();
 
-		self::$_lang_array = parse_ini_file("./lang/lang_".$this->_lang_default.".txt");
+		self::$_lang_array = parse_ini_file(LANGUAGE.'lang_'.$this->_lang_default.'.txt');
 
 	}
 
@@ -474,7 +474,7 @@ class LangUtil{
 
 		if(array_key_exists($ID, self::$_lang_array))
 			return self::$_lang_array[$ID];
-		else
+		else 
 			return '['.$ID.']';
 	}
 }

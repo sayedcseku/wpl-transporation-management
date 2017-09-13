@@ -35,6 +35,18 @@ class AssetBao{
 
 
 	}
+	public function getAsset($Asset){
+
+		$Result = new Result();
+		$Result = $this->_AssetDao->getAsset($Asset);
+		//print_r($Result);
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in AssetBao.createAsset()");
+
+		return $Result;
+
+
+	}
 	public function updateAsset($Asset){
 
         $Result = new Result();
