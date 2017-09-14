@@ -153,7 +153,7 @@ class Asset{
 
 }
 
-class route{
+class Route{
     private $_id;
     private $_start;
     private $_dest;
@@ -254,7 +254,7 @@ class route{
 
 }
 
-class combination{
+class Combination{
 
 
 }

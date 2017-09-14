@@ -79,54 +79,63 @@ class AssetDao{
     public function getAsset($Asset){
 
 
-        $Result = $this->readUserRoles($User);
+        $SQL = "SELECT * FROM tbl_assets where id ='".$Asset->getId()."'";
+        $this->_DB->doQuery($SQL);
 
-        if($Result->getIsSuccess()){
+        //reading the top row for this Role from the database
+        $row = $this->_DB->getTopRow();
+
+        $this->_Asset = new Asset();
+
+        //preparing the Role object
+        $this->_Asset->setId ( $row['id']);
+        $this->_Asset->setAssetType( $row['asset_type'] );
+        $this->_Asset->setCompanyName( $row['company_name'] );
+        $this->_Asset->setIsRented( $row['isRented'] );
+        $this->_Asset->setRentCost( $row['rent_cost'] );
+        $this->_Asset->setLiscenceNo( $row['liscence_no'] );
 
 
-            $this->_User = $Result->getResultObject();
-
-
-            $SQL = "SELECT p.ID, p.Name  FROM tbl_user u,tbl_user_Position up, tbl_Position p
-                    WHERE u.ID=up.UserID and up.PositionID=p.ID and  u.IsDeleted is null and  u.ID='".$this->_User->getID()."'";
-
-            $this->_DB->doQuery($SQL);
-
-            //reading all the rows
-            $rows = $this->_DB->getAllRows();
-
-            //setting Positions list object
-            $Positions = array();
-
-            for($i = 0; $i < sizeof($rows); $i++) {
-
-                $row = $rows[$i];
-
-                $Position = new Position();
-
-                //filling up Position information
-                $Position->setID ( $row['ID']);
-                $Position->setName ( $row['Name']);
-
-                //adding new Positions with every iteration belong to this user
-                $Positions[]=$Position;
-
-            }
-
-            //assigning Position list to the user object
-            $this->_User->setPositions($Positions);
-
-        }
-
-        //todo: LOG util with level of log
 
         $Result = new Result();
         $Result->setIsSuccess(1);
-        $Result->setResultObject($this->_User);
+        $Result->setResultObject($this->_Asset);
 
         return $Result;
 
     }
+
+    public function updateAsset($Asset){
+
+
+
+        $SQL = "UPDATE tbl_assets SET asset_type='".$Asset->getAssetType()."',
+			company_name='".$Asset->getCompanyName()."',
+			isRented='".$Asset->getIsRented()."',
+			rent_cost='".$Asset->getRentCost()."',
+			liscence_no='".$Asset->getLiscenceNo()." '
+			WHERE ID='".$Asset->getId()."'";
+
+		//beginning a transaction
+		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+		//updating the user
+		$SQL = $this->_DB->doQuery($SQL);
+
+
+		//closing the transaction
+		$this->_DB->getConnection()->commit();
+
+
+
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($SQL);
+
+		return $Result;
+
+
+    }
+
     public function deleteAsset($Asset){
 
         //beginning a transaction

@@ -21,6 +21,8 @@ if(isset($_POST['request']))
 	if($Result->getIsSuccess())
 		echo '<strong>'.$Result->getResultObject().'</strong>';
 
+	header("Location:".PageUtil::$ASSETS);
+
 }
 if(isset($_GET['edit']))
 {
@@ -33,16 +35,18 @@ if(isset($_GET['edit']))
 if(isset($_POST['update']))
 {
 	$Asset = new Asset();
-
-    $Asset->setAssetType ( $_POST['AssetType'] );
-    $Asset->setCompanyName ( $_POST['CompanyName'] );
+	$Asset->setId ($_GET['edit']);
+    $Asset->setAssetType ( $_POST['assetType'] );
+    $Asset->setCompanyName ( $_POST['comName'] );
     $Asset->setIsRented ( $_POST['isRented'] );
-    $Asset->setRentCost( $_POST['RentCost'] );
-    $Asset->setLiscenceNo( $_POST['LiscenceNo'] );
+    $Asset->setRentCost( $_POST['r_cost'] );
+    $Asset->setLiscenceNo( $_POST['liscenceNo'] );
 
-	$_AssetBAO->updateAsset($Asset);
+	$Result = $_AssetBao->updateAsset($Asset);
+	if($Result->getIsSuccess())
+		echo '<strong>'.$Result->getResultObject().'</strong>';
 
-	header("Location:".PageUtil::$USER);
+	header("Location:".PageUtil::$ASSETS);
 }
 
 echo '<br> log:: exit blade.user_new.php';

@@ -1,5 +1,6 @@
 <permissions>
 
+	<!-- ASSETS CATEGORY Category -->
 	<permission>
 		<id>ASSETS_C</id>
 		<name>ASSETS_C</name>
@@ -20,7 +21,29 @@
 		<name>ASSETS_D</name>
 		<category>ASSET CATEGORY</category>
 	</permission>
-	
+
+<!-- ROUTES CATEGORY Category -->
+	<permission>
+		<id>ROUTES_C</id>
+		<name>ROUTES_C</name>
+		<category>ROUTES CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ROUTES_R</id>
+		<name>ROUTES_R</name>
+		<category>ROUTES CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ROUTES_U</id>
+		<name>ROUTES_U</name>
+		<category>ROUTES CATEGORY</category>
+	</permission>
+	<permission>
+		<id>ROUTES_D</id>
+		<name>ROUTES_D</name>
+		<category>ROUTES CATEGORY</category>
+	</permission>
+
 	<!-- DISCUSSION CATEGORY Category -->
 	<permission>
 		<id>DISCUSSION_CAT_C</id>

@@ -326,7 +326,7 @@
 					</Menu>
 						<Menu>
 							<ParentMenu>ASSET CATEGORY</ParentMenu>
-							<Title>ADD ASSET</Title>
+							<Title>Add Assets</Title>
 							<Link>new_asset.php</Link>
 							<Permissions>
 								<Permission>USER_R</Permission>
@@ -353,6 +353,19 @@
 						<Menu>
 							<ParentMenu>Transport</ParentMenu>
 							<Title>Route category</Title>
+
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ROUTES_C</Permission>
+								<Permission>ROUTES_R</Permission>
+								<Permission>ROUTES_U</Permission>
+								<Permission>ROUTES_D</Permission>
+							</Permissions>
+						</Menu>
+						<Menu>
+							<ParentMenu>Route category</ParentMenu>
+							<Title>Manage Routes</Title>
+							<Link>routes.php</Link>
 							<Permissions>
 								<Permission>USER_R</Permission>
 								<Permission>ASSETS_C</Permission>
@@ -362,29 +375,6 @@
 							</Permissions>
 						</Menu>
 
-						<Menu>
-							<ParentMenu>Route category</ParentMenu>
-							<Title>CREATE Route</Title>
-							<Link></Link>
-							<Permissions>
-								<Permission>USER_R</Permission>
-								<Permission>ASSETS_C</Permission>
-								<Permission>ASSETS_R</Permission>
-								<Permission>ASSETS_U</Permission>
-								<Permission>ASSETS_D</Permission>
-							</Permissions>
-						</Menu>
-						<Menu>
-							<ParentMenu>Route category</ParentMenu>
-							<Title>Assign Route to Asset</Title>
-							<Link></Link>
-							<Permissions>
-								<Permission>USER_R</Permission>
-								<Permission>ASSETS_C</Permission>
-								<Permission>ASSETS_R</Permission>
-								<Permission>ASSETS_U</Permission>
-								<Permission>ASSETS_D</Permission>
-							</Permissions>
-						</Menu>
+
 
 </Menus>

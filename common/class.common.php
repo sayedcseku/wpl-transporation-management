@@ -201,6 +201,9 @@ class PageUtil{
 
     public static $ASSET_NEW = 'new_asset.php';
     public static $ASSETS = 'assets.php';
+    public static $ROUTES = 'routes.php';
+    public static $COMBO = 'transport_route.php';
+
 
 
 
@@ -250,6 +253,9 @@ class RouteUtil{
 
          self::$s_Routes[PageUtil::$ASSET_NEW] =   "/modules/tms/ui/view.new_assets.php";
          self::$s_Routes[PageUtil::$ASSETS] =   "/modules/tms/ui/view.assets.php";
+
+          self::$s_Routes[PageUtil::$ROUTES] =   "/modules/tms/ui/view.routes.php";
+          self::$s_Routes[PageUtil::$COMBO] =   "/modules/tms/ui/view.assets.php";
 
         //the page not found will redirect to error page
          self::$s_Routes[PageUtil::$ERROR] = "modules/dashboard/ui/view.error.php";
