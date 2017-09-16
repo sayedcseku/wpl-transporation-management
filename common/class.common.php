@@ -251,7 +251,6 @@ class RouteUtil{
          self::$s_Routes[PageUtil::$USER_SEARCH] =   "modules/user/ui/view.user_search.php";
          self::$s_Routes[PageUtil::$USER_FORGOT_PASSWORD] =   "modules/user/ui/view.forgot_password.php";
 
-         self::$s_Routes[PageUtil::$ASSET_NEW] =   "/modules/tms/ui/view.new_assets.php";
          self::$s_Routes[PageUtil::$ASSETS] =   "/modules/tms/ui/view.assets.php";
 
           self::$s_Routes[PageUtil::$ROUTES] =   "/modules/tms/ui/view.routes.php";

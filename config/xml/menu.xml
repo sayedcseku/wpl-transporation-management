@@ -324,22 +324,10 @@
 							<Permission>ASSETS_D</Permission>
 						</Permissions>
 					</Menu>
-						<Menu>
-							<ParentMenu>ASSET CATEGORY</ParentMenu>
-							<Title>Add Assets</Title>
-							<Link>new_asset.php</Link>
-							<Permissions>
-								<Permission>USER_R</Permission>
-								<Permission>ASSETS_C</Permission>
-								<Permission>ASSETS_R</Permission>
-								<Permission>ASSETS_U</Permission>
-								<Permission>ASSETS_D</Permission>
-							</Permissions>
-						</Menu>
 
 						<Menu>
-							<ParentMenu>ASSET CATEGORY</ParentMenu>
-							<Title>All Assets</Title>
+							<ParentMenu>Asset Category</ParentMenu>
+							<Title>Manage Assets</Title>
 							<Link>assets.php</Link>
 							<Permissions>
 								<Permission>USER_R</Permission>
@@ -375,6 +363,28 @@
 							</Permissions>
 						</Menu>
 
+						<Menu>
+							<ParentMenu>Transport</ParentMenu>
+							<Title>Driver and Helper Assign</Title>
+							<Permission>USER_R</Permission>
 
+						</Menu>
+						<Menu>
+							<ParentMenu>Driver and Helper Assign</ParentMenu>
+							<Title>Manage Driver and Helper</Title>
+							<Link></Link>
+
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ROUTES_C</Permission>
+								<Permission>ROUTES_R</Permission>
+								<Permission>ROUTES_U</Permission>
+								<Permission>ROUTES_D</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
 
 </Menus>

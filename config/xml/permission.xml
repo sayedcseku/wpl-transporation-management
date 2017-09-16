@@ -44,6 +44,8 @@
 		<category>ROUTES CATEGORY</category>
 	</permission>
 
+	<!-- Driver& Helper Assignment CATEGORY Category -->
+
 	<!-- DISCUSSION CATEGORY Category -->
 	<permission>
 		<id>DISCUSSION_CAT_C</id>

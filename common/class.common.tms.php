@@ -255,7 +255,110 @@ class Route{
 }
 
 class Combination{
+    private $_cid;
+    private $_asset_id;
+    private $_driver_id;
+    private $_helper_id;
 
+
+
+
+    /**
+     * Get the value of Asset Id
+     *
+     * @return mixed
+     */
+    public function getAssetId()
+    {
+        return $this->_asset_id;
+    }
+
+    /**
+     * Set the value of Asset Id
+     *
+     * @param mixed _asset_id
+     *
+     * @return self
+     */
+    public function setAssetId($_asset_id)
+    {
+        $this->_asset_id = $_asset_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Driver Id
+     *
+     * @return mixed
+     */
+    public function getDriverId()
+    {
+        return $this->_driver_id;
+    }
+
+    /**
+     * Set the value of Driver Id
+     *
+     * @param mixed _driver_id
+     *
+     * @return self
+     */
+    public function setDriverId($_driver_id)
+    {
+        $this->_driver_id = $_driver_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Helper Id
+     *
+     * @return mixed
+     */
+    public function getHelperId()
+    {
+        return $this->_helper_id;
+    }
+
+    /**
+     * Set the value of Helper Id
+     *
+     * @param mixed _helper_id
+     *
+     * @return self
+     */
+    public function setHelperId($_helper_id)
+    {
+        $this->_helper_id = $_helper_id;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of Set the value of Via
+     *
+     * @return mixed
+     */
+    public function getCid()
+    {
+        return $this->_cid;
+    }
+
+    /**
+     * Set the value of Set the value of Via
+     *
+     * @param mixed _cid
+     *
+     * @return self
+     */
+    public function setCid($_cid)
+    {
+        $this->_cid = $_cid;
+
+        return $this;
+    }
 
 }
 
