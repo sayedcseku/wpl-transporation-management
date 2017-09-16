@@ -1,2 +1,7 @@
 # wpl-transporation-management
-Transportation Management sytem for Khulna University, Bangladesh
+
+A Web Programing Laboratory project.
+
+
+
+Transportation Management system for Khulna University, Bangladesh
