@@ -16,4 +16,5 @@ define('MODULES_DASHBOARD',MODULES.'/dashboard/');
 define('MODULES_USER',MODULES.'/user/');
 define('MODULES_FORUM',MODULES.'/forum/');
 define('MODULES_HALL',MODULES.'/hall/');
+define('MODULES_TMS',MODULES.'/tms/');
 ?>

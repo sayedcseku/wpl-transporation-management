@@ -337,6 +337,18 @@
 								<Permission>ASSETS_D</Permission>
 							</Permissions>
 						</Menu>
+						<Menu>
+							<ParentMenu>Asset Category</ParentMenu>
+							<Title>Manage Types of Assets</Title>
+							<Link>asset_type.php</Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+							</Permissions>
+						</Menu>
 
 						<Menu>
 							<ParentMenu>Transport</ParentMenu>
@@ -365,14 +377,16 @@
 
 						<Menu>
 							<ParentMenu>Transport</ParentMenu>
-							<Title>Driver and Helper Assign</Title>
-							<Permission>USER_R</Permission>
+							<Title>Assign Resources</Title>
+							<Permissions>
+								<Permission>USER_R</Permission>
+							</Permissions>
 
 						</Menu>
 						<Menu>
-							<ParentMenu>Driver and Helper Assign</ParentMenu>
+							<ParentMenu>Assign Resources</ParentMenu>
 							<Title>Manage Driver and Helper</Title>
-							<Link></Link>
+							<Link>transport_route.php</Link>
 
 							<Permissions>
 								<Permission>USER_R</Permission>

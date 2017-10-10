@@ -12,12 +12,11 @@ $_Log= LogUtil::getInstance();
 
 $globalUser = '';
 
-/* deleting an existing user */
 if(isset($_POST['request']))
 {
 	$Asset = new Asset();
 
-	$Asset->setAssetType($_DB->secureInput($_POST['assetType']));
+	$Asset->setAtId($_DB->secureInput($_POST['atId']));
 	$Asset->setCompanyName($_DB->secureInput($_POST['comName']));
 	$Asset->setIsRented($_DB->secureInput($_POST['isRented']));
 	$Asset->setRentCost($_DB->secureInput($_POST['r_cost']));
@@ -43,7 +42,7 @@ if(isset($_POST['update']))
 {
 	$Asset = new Asset();
 	$Asset->setId ($_GET['edit']);
-    $Asset->setAssetType ( $_POST['assetType'] );
+    $Asset->setAtId ( $_POST['atId'] );
     $Asset->setCompanyName ( $_POST['comName'] );
     $Asset->setIsRented ( $_POST['isRented'] );
     $Asset->setRentCost( $_POST['r_cost'] );
@@ -66,6 +65,7 @@ if(isset($_GET['del']))
 
 	header("Location:".PageUtil::$USER);
 }
+
 
 
 echo '<br> log:: exit blade.user.php';

@@ -4,7 +4,7 @@
 
 class Asset{
     private $_id;
-    private $_asset_type;
+    private $_at_id;
     private $_company_name;
     private $_isRented;
     private $_rent_cost;
@@ -35,9 +35,9 @@ class Asset{
      *
      * @return mixed
      */
-    public function getAssetType()
+    public function getAtId()
     {
-        return $this->_asset_type;
+        return $this->_at_id;
     }
 
     /**
@@ -47,9 +47,9 @@ class Asset{
      *
      * @return self
      */
-    public function setAssetType($_asset_type)
+    public function setAtId($_at_id)
     {
-        $this->_asset_type = $_asset_type;
+        $this->_at_id = $_at_id;
 
         return $this;
     }
@@ -356,6 +356,87 @@ class Combination{
     public function setCid($_cid)
     {
         $this->_cid = $_cid;
+
+        return $this;
+    }
+
+}
+class AssetType{
+    private $_at_id;
+    private $_type_name;
+    private $_specs;
+
+
+
+
+    /**
+     * Get the value of Set the value of Set the value of Via
+     *
+     * @return mixed
+     */
+    public function getAtId()
+    {
+        return $this->_at_id;
+    }
+
+    /**
+     * Set the value of Set the value of Set the value of Via
+     *
+     * @param mixed _at_id
+     *
+     * @return self
+     */
+    public function setAtId($_at_id)
+    {
+        $this->_at_id = $_at_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Type Name
+     *
+     * @return mixed
+     */
+    public function getTypeName()
+    {
+        return $this->_type_name;
+    }
+
+    /**
+     * Set the value of Type Name
+     *
+     * @param mixed _type_name
+     *
+     * @return self
+     */
+    public function setTypeName($_type_name)
+    {
+        $this->_type_name = $_type_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Specs
+     *
+     * @return mixed
+     */
+    public function getSpecs()
+    {
+        return $this->_specs;
+    }
+
+    /**
+     * Set the value of Specs
+     *
+     * @param mixed _specs
+     *
+     * @return self
+     */
+    public function setSpecs($_specs)
+    {
+        $this->_specs = $_specs;
 
         return $this;
     }

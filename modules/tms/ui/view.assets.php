@@ -18,9 +18,34 @@ include_once './common/class.common.php';
               	<label class="control-label col-sm-4" for="assetType">Asset Type:</label>
               	<div class="col-sm-6">
 
-  				  <input type="text" name="assetType" class="form-control" placeholder="Asset Identity" value="<?php
-  					if(isset($_GET['edit'])) echo $globalUser->getAssetType();  ?>"/>
+                    <?php
+                    // this block of code prints the list box of roles with current assigned  roles
 
+                    $var = '<select name="atId" class="form-control" id="select-from-types" multiple>';
+                    $Result = $_AssetBao->getAllAssetType();
+                        //if DAO access is successful to load all the Roles then show them one by one
+                    if($Result->getIsSuccess()){
+
+                        $AssetTypes = $Result->getResultObject();
+
+                       for ($i=0; $i < sizeof($AssetTypes); $i++) {
+
+                            $AssetType = $AssetTypes[$i];
+
+                            $var = $var. '<option value="'.$AssetType->getAtId().'"';
+
+                            if(isset($_GET['edit'])) {
+                                $var = $var.' selected="selected"';
+                            }
+
+                            $var = $var.'>'.$AssetType->getTypeName().'</option>';
+
+                        }
+
+                        $var = $var.'</select>';
+                    }
+                    echo $var;
+                    ?>
 
 			  	</div>
 			</div>
@@ -107,12 +132,6 @@ include_once './common/class.common.php';
 					 <button type="submit" value="request" name="request">Submit Request</button>
 				<?php } ?>
 
-
-
-
-
-
-
 			    </div>
             </div>
 		</form>
@@ -136,21 +155,33 @@ if($Result->getIsSuccess()){
     $AssetList = $Result->getResultObject();
     ?>
     <tr>
-        <th>AssetType</th>
-        <th>CompanyName</th>
+        <th>Asset Type</th>
+        <th>Company Name</th>
         <th>isRented</th>
-        <th>RentCost</th>
-        <th>LiscenceNo</th>
+        <th>Rent Cost</th>
+        <th>Liscence No</th>
 
     </tr>
     <?php
     for($i = 0; $i < sizeof($AssetList); $i++) {
         $Asset = $AssetList[$i];
+        $AssetType->setAtId($Asset->getAtId());
         ?>
         <tr>
-            <td><?php echo $Asset->getAssetType(); ?></td>
+            <td>
+                <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
+            </td>
             <td><?php echo $Asset->getCompanyName(); ?></td>
-            <td><?php echo $Asset->getIsRented(); ?></td>
+            <td>
+                <?php
+                if($Asset->getIsRented()=='true')
+                    echo "Yes";
+                    else
+                        echo "No";
+
+                    ?>
+            </td>
+
             <td><?php echo $Asset->getRentCost(); ?></td>
             <td><?php echo $Asset->getLiscenceNo(); ?></td>
             <td>
