@@ -257,6 +257,7 @@ class Route{
 class Combination{
     private $_cid;
     private $_asset_id;
+    private $_route_id;
     private $_driver_id;
     private $_helper_id;
 
@@ -271,6 +272,24 @@ class Combination{
     public function getAssetId()
     {
         return $this->_asset_id;
+    }
+
+    /**
+     * Set the value of Asset Id
+     *
+     * @param mixed _asset_id
+     *
+     * @return self
+     */
+    public function setRouteId($_route_id)
+    {
+        $this->_route_id = $_route_id;
+
+        return $this;
+    }
+    public function getRouteId()
+    {
+        return $this->_route_id;
     }
 
     /**

@@ -21,7 +21,7 @@ include_once './common/class.common.php';
                     <?php
                     // this block of code prints the list box of roles with current assigned  roles
 
-                    $var = '<select name="atId" class="form-control" id="select-from-types" multiple>';
+                    $var = '<select name="atId" class="form-control"  multiple>';
                     $Result = $_AssetBao->getAllAssetType();
                         //if DAO access is successful to load all the Roles then show them one by one
                     if($Result->getIsSuccess()){
@@ -31,10 +31,13 @@ include_once './common/class.common.php';
                        for ($i=0; $i < sizeof($AssetTypes); $i++) {
 
                             $AssetType = $AssetTypes[$i];
+                            $val = $AssetType->getAtId();
+                            if(isset($_GET['edit']))
+                                $edit_val = $globalUser->getAtId();
 
-                            $var = $var. '<option value="'.$AssetType->getAtId().'"';
+                            $var = $var. '<option value="'.$val.'"';
 
-                            if(isset($_GET['edit'])) {
+                            if(isset($_GET['edit']) && $val == $edit_val) {
                                 $var = $var.' selected="selected"';
                             }
 
@@ -74,8 +77,8 @@ include_once './common/class.common.php';
 
 
                     <?php
-                    $var = '<select name="isRented" class="form-control" id="select-from-roles" multiple>';
-                    $var = $var. '<option selected disabled>Select Option</option>';
+                    $var = '<select name="isRented" class="form-control"  multiple>';
+                    //$var = $var. '<option selected disabled>Select Option</option>';
 
                     $op  = array('true','false');
                     for ($i=0; $i < 2; $i++) {
@@ -165,11 +168,11 @@ if($Result->getIsSuccess()){
     <?php
     for($i = 0; $i < sizeof($AssetList); $i++) {
         $Asset = $AssetList[$i];
-        $AssetType->setAtId($Asset->getAtId());
+
         ?>
         <tr>
             <td>
-                <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
+                <a href="asset_type.php?edit=<?php echo $Asset->getAtId() ?> "> <?php echo $Asset->getAtId() ?> </a>
             </td>
             <td><?php echo $Asset->getCompanyName(); ?></td>
             <td>

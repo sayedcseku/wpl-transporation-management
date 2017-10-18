@@ -12,6 +12,7 @@ class AssetDao{
 
         $this->_DB = DBUtil::getInstance();
         $this->_Asset = new Asset();
+        $this->_AssetType = new AssetType();
 
     }
 
@@ -74,7 +75,8 @@ class AssetDao{
 
         $AssetList = array();
 
-        $this->_DB->doQuery("SELECT * FROM tbl_assets");
+        $this->_DB->doQuery("SELECT * FROM tbl_assets inner JOIN tbl_asset_type on
+            tbl_assets.at_id =tbl_asset_type.at_id");
 
         $rows = $this->_DB->getAllRows();
 
@@ -88,6 +90,7 @@ class AssetDao{
             $this->_Asset->setIsRented ( $row['isRented'] );
             $this->_Asset->setRentCost( $row['rent_cost'] );
             $this->_Asset->setLiscenceNo( $row['liscence_no'] );
+            $this->_AssetType->setTypeName($row['type_name']);
 
 
 

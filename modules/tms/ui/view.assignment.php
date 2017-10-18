@@ -1,13 +1,8 @@
 <?php
-
 include_once 'blade/view.assignment.blade.php';
-include_once COMMON.'class.common.php';
-
-
+include_once './common/class.common.php';
 ?>
-
 <div class="panel panel-default">
-
 
     <div class="panel-heading">Assign</div>
 
@@ -16,130 +11,143 @@ include_once COMMON.'class.common.php';
 	<div id="form">
 		<form method="post" class="form-horizontal">
 
-			<div class="form-group">
-              	<label class="control-label col-sm-4" for="assetType">Asset Type:</label>
-              	<div class="col-sm-6">
 
-                    <?php
-                    // this block of code prints the list box of roles with current assigned  roles
+    			<div class="form-group">
+                  	<label class="control-label col-sm-0" for="selectAsset">Select Asset:</label>
+                  	<div class="col-sm-12">
 
-                    $var = '<select name="atId" class="form-control" id="select-from-types" multiple>';
-                    $Result = $_AssetBao->getAllAssetType();
-                        //if DAO access is successful to load all the Roles then show them one by one
-                    if($Result->getIsSuccess()){
+                        <?php
+                        // this block of code prints the list box of roles with current assigned  roles
 
-                        $AssetTypes = $Result->getResultObject();
+                        $var = '<select name="selectAsset" class="form-control" id="select-from-types" multiple>';
+                        $Result = $_AssignBao->getAllAsset();
 
-                       for ($i=0; $i < sizeof($AssetTypes); $i++) {
+                        if(isset($Result)){
 
-                            $AssetType = $AssetTypes[$i];
+                           for ($i=0; $i < sizeof($Result); $i++) {
 
-                            $var = $var. '<option value="'.$AssetType->getAtId().'"';
+                                $Asset = $Result[$i];
 
-                            if(isset($_GET['edit'])) {
-                                $var = $var.' selected="selected"';
+                                $var = $var. '<option value="'.$Asset['id'].'"';
+
+
+                                $var = $var.'>'.'Asset Type: '.$Asset['type_name'].', Company Name: '.$Asset['company_name'].'</option>';
+
                             }
 
-                            $var = $var.'>'.$AssetType->getTypeName().'</option>';
-
+                            $var = $var.'</select>';
                         }
+                        echo $var;
+                        ?>
 
-                        $var = $var.'</select>';
-                    }
-                    echo $var;
-                    ?>
-
-			  	</div>
-			</div>
+    			  	</div>
+    			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="comName">Company Name:</label>
-              	<div class="col-sm-6">
-                    <input type="text" name="comName" class="form-control" placeholder="Company Name" value="<?php
-    					if(isset($_GET['edit'])) echo $globalUser->getCompanyName();  ?>"/>
+              	<label class="control-label col-sm-0" for="txtDriver">Select Driver:</label>
+              	<div class="col-sm-12">
+
+						    <?php
+						    // this block of code prints the list box of roles with current assigned  roles
+
+						    $var = '<select name="txtDriver" class="form-control" id="select-from-roles" multiple>';
+							$Result = $_AssignBao->getAllDrivers();
+								//if DAO access is successful to load all the Roles then show them one by one
+							if(isset($Result)){
+
+
+						       for ($i=0; $i < sizeof($Result); $i++) {
+
+
+						    		$var = $var. '<option value="'.$Result[$i]['userid'].'"';
+                                    $fullname = $Result[$i]['firstname']. " ". $Result[$i]['lastname'];
+						          	$var = $var.'>'.$fullname.'</option>';
+
+								}
+
+								$var = $var.'</select>';
+							}
+							echo $var;
+							?>
+				</div>
+			</div>
+            <div class="form-group">
+              	<label class="control-label col-sm-0" for="txtHelper">Select Helper:</label>
+              	<div class="col-sm-12">
+
+						    <?php
+						    // this block of code prints the list box of roles with current assigned  roles
+
+						    $var = '<select name="txtHelper" class="form-control" id="select-from-roles" multiple>';
+							$Result = $_AssignBao->getAllHelpers();
+								//if DAO access is successful to load all the Roles then show them one by one
+							if(isset($Result)){
+
+
+						       for ($i=0; $i < sizeof($Result); $i++) {
+
+
+						    		$var = $var. '<option value="'.$Result[$i]['userid'].'"';
+                                    $fullname = $Result[$i]['firstname']. " ". $Result[$i]['lastname'];
+						          	$var = $var.'>'.$fullname.'</option>';
+
+								}
+
+								$var = $var.'</select>';
+							}
+							echo $var;
+							?>
 				</div>
 			</div>
 
-			<div class="form-group">
-              	<label class="control-label col-sm-4" for="liscenceNo">Liscence No:</label>
-              	<div class="col-sm-6">
-                    <input type="text" name="liscenceNo" class="form-control" placeholder="Liscence No" value="<?php
-    					if(isset($_GET['edit'])) echo $globalUser->getLiscenceNo();  ?>" required />
+            <div class="form-group">
+              	<label class="control-label col-sm-0" for="txtRoute">Select Route:</label>
+              	<div class="col-sm-12">
 
-			  	</div>
-			</div>
+						    <?php
+						    // this block of code prints the list box of roles with current assigned  roles
 
-
-			<div class="form-group">
-              	<label class="control-label col-sm-4" for="isRented">Is it Rented:</label>
-              	<div class="col-sm-6">
+						    $var = '<select name="txtRoute" class="form-control" multiple>';
+							$Result = $_AssignBao->getAllRoute();
+								//if DAO access is successful to load all the Roles then show them one by one
+							if(isset($Result)){
 
 
-                    <?php
-                    $var = '<select name="isRented" class="form-control" id="select-from-roles" multiple>';
-                    $var = $var. '<option selected disabled>Select Option</option>';
+						       for ($i=0; $i < sizeof($Result); $i++) {
 
-                    $op  = array('true','false');
-                    for ($i=0; $i < 2; $i++) {
 
-                        $ops= $op[$i];
+						    		$var = $var. '<option value="'.$Result[$i]['id'].'"';
+                                    $fullname = $Result[$i]['start']. " - ".$Result[$i]['via'].' - '. $Result[$i]['dest'];
+						          	$var = $var.'>'.$fullname.'</option>';
 
-                        $var = $var. '<option value="'.$ops.'"';
+								}
 
-                        if(isset($_GET['edit']) ) {
-                            if($globalUser->getIsRented()==$ops){
-                                $var = $var.' selected="selected"';
-                            }
-
-                        }
-                        if($ops=='true'){
-                            $var = $var.'>'.'Yes'.'</option>';
-                        }
-
-                        else {
-                            $var = $var.'>'.'No'.'</option>';
-
-                        }
-
-                    }
-
-                    $var = $var.'</select>';
-
-                    echo $var;
-
-                    ?>
+								$var = $var.'</select>';
+							}
+							echo $var;
+							?>
 				</div>
 			</div>
 
-			<div class="form-group">
-              	<label class="control-label col-sm-4" for="r_cost">Rent Cost:</label>
-              	<div class="col-sm-6">
-                    <input type="text" name="r_cost" class="form-control" placeholder="Rent Cost" value="<?php
-                       if(isset($_GET['edit'])) echo $globalUser->getRentCost();  ?>" required/>
 
-			  	</div>
-			</div>
+
 	        <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-				  <?php
-				  if(isset($_GET['edit'])){
-				  ?>
-				  <button type="submit" value="update" name="update">Update Request</button>
+              <div align = "right">
 
-				<?php
-				}
-				else {
-
-				?>
-					 <button type="submit" value="request" name="request">Submit Request</button>
-				<?php } ?>
-
-
-
-
-
-
-
+						<?php
+						if(isset($_GET['edit']))
+						{
+							?>
+							<button type="submit" value="update" name="update">update</button>
+							<?php
+						}
+						else
+						{
+							?>
+							<button type="submit" value="Assign" name="save">Assign</button>
+							<?php
+						}
+						?>
 			    </div>
             </div>
 		</form>
@@ -147,65 +155,65 @@ include_once COMMON.'class.common.php';
 	</div>
 	</div>
 
-</div>
+    <div class="panel-body">
 
-	<div class="panel-body">
-
-	<table class="table table-bordered">
-	<?php
+    <table class="table table-bordered">
+    <?php
 
 
-	$Result = $_UserBAO->getAllUsers();
+    $Result = $_AssignBao->getAllCombination();
 
-	//if DAO access is successful to load all the users then show them one by one
-	if($Result->getIsSuccess()){
+    //if DAO access is successful to load all the users then show them one by one
+    if($Result->getIsSuccess()){
 
-		$UserList = $Result->getResultObject();
-	?>
-		<tr>
-			<th>University ID</th>
-			<th>Email</th>
-			<th>Password</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Status</th>
-		</tr>
-		<?php
-		for($i = 0; $i < sizeof($UserList); $i++) {
-			$User = $UserList[$i];
-			?>
-		    <tr>
-			    <td><?php echo $User->getUniversityID(); ?></td>
-			    <td><?php echo $User->getEmail(); ?></td>
-			    <td><?php echo $User->getPassword(); ?></td>
-			    <td><?php echo $User->getFirstName(); ?></td>
-			    <td><?php echo $User->getLastName(); ?></td>
-			    <td><?php echo $User->getStatus(); ?></td>
-			    <td>
-			    <a href="?edit=<?php echo $User->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
-			    </td>
-			    <td>
-			    <a href="?approve=<?php echo $User->getID(); ?>" onclick="return confirm('sure to approve !'); " >approve</a>
-			    </td>
-			    <td>
-			    <a href="?reject=<?php echo $User->getID(); ?>" onclick="return confirm('sure to reject !'); " >reject</a>
-			    </td>
-			    <td>
-			    <a href="?del=<?php echo $User->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
-			    </td>
-		    </tr>
-	    <?php
+        $Combinations = $Result->getResultObject();
+        ?>
+        <tr>
+            <th>Asset</th>
+            <th>Asset's Company</th>
+            <th>Driver</th>
+            <th>Helper</th>
+            <th>Route</th>
 
-		}
+        </tr>
+        <?php
+        $var1= $_AssignBao->getAsset();
+        for($i = 0; $i < sizeof($Combinations); $i++) {
+            $Combination = $Combinations[$i];
 
-	}
-	else{
+            ?>
+            <tr>
+                <td>
+                    <a href="assets.php?edit=<?php echo $Combination->getAssetId() ?> "> <?php echo $var1[$i]['typename'] ?> </a>
+                </td>
+                <td>
+                    <?php echo $var1[$i]['company_name'] ?>
+                </td>
+                <td>
+                    <a href="user.php?edit=<?php echo $Combination->getDriverId() ?> "> <?php echo $_AssignBao->getUser($Combination->getDriverId()) ?> </a>
+                </td>
+                <td>
+                    <a href="user.php?edit=<?php echo $Combination->getHelperId() ?> "> <?php echo $_AssignBao->getUser($Combination->getHelperId()) ?> </a>
+                </td>
 
-		echo $Result->getResultObject(); //giving failure message
-	}
+                <td>
+                    <a href="routes.php?edit=<?php echo $Combination->getRouteId() ?> "> <?php echo $_AssignBao->getRoute($Combination->getRouteId()) ?> </a>
+                </td>
 
-	?>
-	</table>
-	</div>
+                <td>
+                    <a href="?del=<?php echo $Combination->getCId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                </td>
+            </tr>
+            <?php
 
-</div>
+        }
+
+    }
+    else{
+
+        echo $Result->getResultObject(); //giving failure message
+    }
+
+    ?>
+    </table>
+    </div>
