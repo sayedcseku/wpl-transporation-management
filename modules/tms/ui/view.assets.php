@@ -7,8 +7,9 @@ include_once './common/class.common.php';
 <div class="panel panel-default">
 
 
-    <div class="panel-heading"> New Asset</div>
-
+    <div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
+        <b>New Asset</b></div>
+    <br>
     <div class="panel-body">
 
 	<div id="form">
@@ -21,7 +22,7 @@ include_once './common/class.common.php';
                     <?php
                     // this block of code prints the list box of roles with current assigned  roles
 
-                    $var = '<select name="atId" class="form-control"  multiple>';
+                    $var = '<select name="atId" class="form-control" id="select-from-types" multiple>';
                     $Result = $_AssetBao->getAllAssetType();
                         //if DAO access is successful to load all the Roles then show them one by one
                     if($Result->getIsSuccess()){
@@ -31,13 +32,10 @@ include_once './common/class.common.php';
                        for ($i=0; $i < sizeof($AssetTypes); $i++) {
 
                             $AssetType = $AssetTypes[$i];
-                            $val = $AssetType->getAtId();
-                            if(isset($_GET['edit']))
-                                $edit_val = $globalUser->getAtId();
 
-                            $var = $var. '<option value="'.$val.'"';
+                            $var = $var. '<option value="'.$AssetType->getAtId().'"';
 
-                            if(isset($_GET['edit']) && $val == $edit_val) {
+                            if(isset($_GET['edit'])) {
                                 $var = $var.' selected="selected"';
                             }
 
@@ -77,8 +75,8 @@ include_once './common/class.common.php';
 
 
                     <?php
-                    $var = '<select name="isRented" class="form-control"  multiple>';
-                    //$var = $var. '<option selected disabled>Select Option</option>';
+                    $var = '<select name="isRented" class="form-control" id="select-from-roles" multiple>';
+                    $var = $var. '<option selected disabled>Select Option</option>';
 
                     $op  = array('true','false');
                     for ($i=0; $i < 2; $i++) {
@@ -121,18 +119,18 @@ include_once './common/class.common.php';
 			  	</div>
 			</div>
 	        <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
+              <div class="col-sm-offset-3 col-sm-8">
 				  <?php
 				  if(isset($_GET['edit'])){
 				  ?>
-				  <button type="submit" value="update" name="update">Update Request</button>
+				  <button type="submit" value="update" class="btn btn-primary" name="update">Update Request</button>
 
 				<?php
 				}
 				else {
 
 				?>
-					 <button type="submit" value="request" name="request">Submit Request</button>
+					 <button type="submit" value="request" class="btn btn-primary" name="request">Submit Request</button>
 				<?php } ?>
 
 			    </div>
@@ -144,9 +142,9 @@ include_once './common/class.common.php';
 
 </div>
 
-<div class="panel-body">
+<div class="panel panel-body">
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
 <?php
 
 
@@ -157,22 +155,24 @@ if($Result->getIsSuccess()){
 
     $AssetList = $Result->getResultObject();
     ?>
-    <tr>
+    <tr style="background-color: rgba(7,71,166,0.62)">
         <th>Asset Type</th>
         <th>Company Name</th>
         <th>isRented</th>
         <th>Rent Cost</th>
         <th>Liscence No</th>
+        <th>Edit</th>
+        <th style="color: darkred">Delete</th>
 
     </tr>
     <?php
     for($i = 0; $i < sizeof($AssetList); $i++) {
         $Asset = $AssetList[$i];
-
+        
         ?>
         <tr>
             <td>
-                <a href="asset_type.php?edit=<?php echo $Asset->getAtId() ?> "> <?php echo $Asset->getAtId() ?> </a>
+                <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
             </td>
             <td><?php echo $Asset->getCompanyName(); ?></td>
             <td>
@@ -191,7 +191,7 @@ if($Result->getIsSuccess()){
                 <a href="?edit=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
             </td>
             <td>
-                <a href="?del=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                <a class="text-danger" href="?del=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
             </td>
         </tr>
         <?php

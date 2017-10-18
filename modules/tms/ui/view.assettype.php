@@ -7,41 +7,42 @@ include_once COMMON.'class.common.php';
 
 <div class="panel panel-default">
 
-    <div class="panel-heading">Asset Type</div>
-
+    <div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
+        <b>Asset Type</b></div>
+    <br>
     <div class="panel-body">
 
         <div id="form">
             <form method="post" class="form-horizontal">
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="tName">Type Name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="typeName" placeholder="Type Name" value="<?php
+                    <label class="control-label col-sm-3" for="tName">Type Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="typeName" class="form-control" placeholder="Type Name" value="<?php
                         if(isset($_GET['edit'])) echo $globalUser->getTypeName();  ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="typeSpecs">Specifications: </label>
-                    <div class="col-sm-10">
-                        <input type="text" name="typeSpecs" placeholder="Specifications" value="<?php
+                    <label class="control-label col-sm-3" for="typeSpecs">Specifications: </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="typeSpecs" class="form-control" placeholder="Specifications" value="<?php
                         if(isset($_GET['edit'])) echo $globalUser->getSpecs();  ?>" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-3 col-sm-8">
                         <?php
                         if(isset($_GET['edit']))
                         {
                             ?>
-                            <button type="submit" value="update" name="update">update</button>
+                            <button type="submit" class="btn btn-primary" value="update" name="update">update</button>
                             <?php
                         }
                         else
                         {
                             ?>
-                            <button type="submit" value="request" name="request">save</button>
+                            <button type="submit" class="btn btn-primary" value="request" name="request">save</button>
                             <?php
                         }
                         ?>
@@ -55,7 +56,7 @@ include_once COMMON.'class.common.php';
 
     <div class="panel-body">
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
     <?php
 
 
@@ -66,10 +67,11 @@ include_once COMMON.'class.common.php';
 
         $AssetTypeList = $Result->getResultObject();
         ?>
-        <tr>
+        <tr style="background-color: rgba(7,71,166,0.62)">
             <th>Type Name</th>
             <th>Specifications</th>
-
+            <th>Edit</th>
+            <th style="color: darkred">Delete</th>
         </tr>
         <?php
         for($i = 0; $i < sizeof($AssetTypeList); $i++) {
@@ -83,7 +85,7 @@ include_once COMMON.'class.common.php';
                     <a href="?edit=<?php echo $AssetType->getAtId(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
                 </td>
                 <td>
-                    <a href="?del=<?php echo $AssetType->getAtId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                    <a class="text-danger" href="?del=<?php echo $AssetType->getAtId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
                 </td>
             </tr>
             <?php

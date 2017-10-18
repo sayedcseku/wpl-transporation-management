@@ -4,8 +4,9 @@ include_once './common/class.common.php';
 ?>
 <div class="panel panel-default">
 
-    <div class="panel-heading">Assign</div>
-
+    <div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
+        <b>Assign</b></div>
+    <br>
     <div class="panel-body">
 
 	<div id="form">
@@ -14,6 +15,8 @@ include_once './common/class.common.php';
 
     			<div class="form-group">
                   	<label class="control-label col-sm-0" for="selectAsset">Select Asset:</label>
+                    <br>
+                    <br>
                   	<div class="col-sm-12">
 
                         <?php
@@ -45,6 +48,8 @@ include_once './common/class.common.php';
 
 			<div class="form-group">
               	<label class="control-label col-sm-0" for="txtDriver">Select Driver:</label>
+                <br>
+                <br>
               	<div class="col-sm-12">
 
 						    <?php
@@ -73,6 +78,8 @@ include_once './common/class.common.php';
 			</div>
             <div class="form-group">
               	<label class="control-label col-sm-0" for="txtHelper">Select Helper:</label>
+                <br>
+                <br>
               	<div class="col-sm-12">
 
 						    <?php
@@ -102,6 +109,8 @@ include_once './common/class.common.php';
 
             <div class="form-group">
               	<label class="control-label col-sm-0" for="txtRoute">Select Route:</label>
+                <br>
+                <br>
               	<div class="col-sm-12">
 
 						    <?php
@@ -132,19 +141,19 @@ include_once './common/class.common.php';
 
 
 	        <div class="form-group">
-              <div align = "right">
+              <div align = "center">
 
 						<?php
 						if(isset($_GET['edit']))
 						{
 							?>
-							<button type="submit" value="update" name="update">update</button>
+							<button type="submit" value="update" class="btn btn-primary" name="update">update</button>
 							<?php
 						}
 						else
 						{
 							?>
-							<button type="submit" value="Assign" name="save">Assign</button>
+							<button type="submit" value="Assign" class="btn btn-primary" name="save">Assign</button>
 							<?php
 						}
 						?>
@@ -157,7 +166,7 @@ include_once './common/class.common.php';
 
     <div class="panel-body">
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
     <?php
 
 
@@ -168,13 +177,13 @@ include_once './common/class.common.php';
 
         $Combinations = $Result->getResultObject();
         ?>
-        <tr>
+        <tr style="background-color: rgba(7,71,166,0.62)">
             <th>Asset</th>
             <th>Asset's Company</th>
             <th>Driver</th>
             <th>Helper</th>
             <th>Route</th>
-
+            <th style="color: darkred">Delete</th>
         </tr>
         <?php
         $var1= $_AssignBao->getAsset();
@@ -184,7 +193,7 @@ include_once './common/class.common.php';
             ?>
             <tr>
                 <td>
-                    <a href="assets.php?edit=<?php echo $Combination->getAssetId() ?> "> <?php echo $var1[$i]['typename'] ?> </a>
+                    <a href="asset.php?edit=<?php echo $Combination->getAssetId() ?> "> <?php echo $var1[$i]['typename'] ?> </a>
                 </td>
                 <td>
                     <?php echo $var1[$i]['company_name'] ?>
@@ -197,11 +206,11 @@ include_once './common/class.common.php';
                 </td>
 
                 <td>
-                    <a href="routes.php?edit=<?php echo $Combination->getRouteId() ?> "> <?php echo $_AssignBao->getRoute($Combination->getRouteId()) ?> </a>
+                    <a href="route.php?edit=<?php echo $Combination->getRouteId() ?> "> <?php echo $_AssignBao->getRoute($Combination->getRouteId()) ?> </a>
                 </td>
 
                 <td>
-                    <a href="?del=<?php echo $Combination->getCId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                    <a class="text-danger" href="?del=<?php echo $Combination->getCId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
                 </td>
             </tr>
             <?php

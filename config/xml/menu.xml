@@ -314,7 +314,7 @@
 			</Menu>
 					<Menu>
 						<ParentMenu>Transport</ParentMenu>
-						<Title>ASSET CATEGORY</Title>
+						<Title>Asset Category</Title>
 						<!--<Link>new_asset.php</Link>-->
 						<Permissions>
 							<Permission>USER_R</Permission>

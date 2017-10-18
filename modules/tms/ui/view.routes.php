@@ -9,8 +9,9 @@ include_once './common/class.common.php';
 <div class="panel panel-default">
 
 
-    <div class="panel-heading"> New Route</div>
-
+    <div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
+        <b>New Route</b></div>
+    <br>
     <div class="panel-body">
 
 	<div id="form">
@@ -45,18 +46,18 @@ include_once './common/class.common.php';
 			</div>
 
 	        <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
+              <div class="col-sm-offset-3 col-sm-8">
 				  <?php
 				  if(isset($_GET['edit'])){
 				  ?>
-				  <button type="submit" value="update" name="update">Update Request</button>
+				  <button type="submit" class="btn btn-primary" value="update" name="update">Update Request</button>
 
 				<?php
 				}
 				else {
 
 				?>
-					 <button type="submit" value="request" name="request">Submit Request</button>
+					 <button type="submit" class="btn btn-primary" value="request" name="request">Submit Request</button>
 				<?php } ?>
 
 
@@ -70,9 +71,9 @@ include_once './common/class.common.php';
 
 </div>
 
-<div class="panel-body">
+<div class="panel panel-body">
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
 <?php
 
 
@@ -83,12 +84,13 @@ if($Result->getIsSuccess()){
 
     $RouteList = $Result->getResultObject();
     ?>
-    <tr>
+    <tr style="background-color: rgba(7,71,166,0.62)">
         <th>Route No</th>
         <th>Starting Point</th>
         <th>Via</th>
         <th>Destination</th>
-
+        <th>Edit</th>
+        <th style="color: darkred">Delete</th>
     </tr>
     <?php
     for($i = 0; $i < sizeof($RouteList); $i++) {
@@ -104,7 +106,7 @@ if($Result->getIsSuccess()){
                 <a href="?edit=<?php echo $Route->getId(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
             </td>
             <td>
-                <a href="?del=<?php echo $Route->getId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                <a class="text-danger" href="?del=<?php echo $Route->getId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
             </td>
         </tr>
         <?php
