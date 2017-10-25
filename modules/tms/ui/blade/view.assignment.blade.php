@@ -11,13 +11,14 @@ $_Log= LogUtil::getInstance();
 
 
 $globalUser = '';
+$SearchResult='init';
 if(isset($_POST['search']))
 {
     $searchToken = trim($_POST['txtSearch']);
 
-    $Result = $_AssignBao->searchEverything($searchToken);
+    $SearchResult = $_AssignBao->searchEverything($searchToken);
 
-    print_r($Result);
+    //print_r($SearchResult);
 
     //header("Location:".PageUtil::$COMBO_VIEW);
 

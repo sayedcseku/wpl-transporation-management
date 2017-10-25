@@ -56,24 +56,6 @@ include_once $template_link.'menu.php';
         <script src="resources/js/question_js_2.js" rel="script"></script>
         <script src="resources/js/tms.js" charset="utf-8"></script>
 
-        <style>
-            #imaginary_container{
-                margin-top:10%;
-                margin-bottom: 10%;
-            }
-            .stylish-input-group .input-group-addon{
-                background: white !important;
-            }
-            .stylish-input-group .form-control{
-                border-right:0;
-                box-shadow:0 0 0;
-                border-color:#ccc;
-            }
-            .stylish-input-group button{
-                border:0;
-                background:transparent;
-            }
-        </style>
     </head>
 
 <body>
