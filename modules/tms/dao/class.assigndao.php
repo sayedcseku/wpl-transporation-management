@@ -48,6 +48,51 @@ class AssignDao{
 
         return $Result;
     }
+
+    public function searchEverything($searchToken)
+    {
+        $searchResult = array();
+        $this->_DB->doQuery("SELECT * FROM `routes` WHERE start LIKE '%$searchToken%' OR via LIKE '%$searchToken%'
+        or dest LIKE '%$searchToken%'");
+        $routeResult =  $this->_DB->getAllRows();
+
+        $this->_DB->doQuery("SELECT tbl_assets.id, type_name,`company_name` , specs, tbl_asset_type.type_name as typename FROM `tbl_assets` INNER JOIN tbl_asset_type
+            ON tbl_assets.at_id = tbl_asset_type.at_id WHERE company_name LIKE '%$searchToken%' OR specs LIKE '%$searchToken%'
+        or type_name LIKE '%$searchToken%'");
+        $assetResult =  $this->_DB->getAllRows();
+
+        $SQL = "SELECT
+                tbl_user.ID AS userid,
+                tbl_user.FirstName AS firstname,
+                tbl_user.LastName AS lastname,
+                tbl_role.ID AS roleid,
+                tbl_role.Name AS rolename
+                FROM
+                tbl_user
+                INNER JOIN
+                tbl_user_role
+                ON
+                tbl_user_role.UserID = tbl_user.ID
+                INNER JOIN
+                tbl_role
+                ON
+                tbl_user_role.RoleID = tbl_role.ID
+                WHERE
+                (tbl_role.ID = 'driver' OR tbl_role.ID = 'helper') AND (tbl_user.ID LIKE '%$searchToken%' OR tbl_user.FirstName LIKE
+                '%$searchToken%' OR tbl_user.LastName LIKE '%$searchToken%' OR tbl_role.Name LIKE
+                '%$searchToken%');";
+        $this->_DB->doQuery($SQL);
+        $userResult =  $this->_DB->getAllRows();
+
+        $searchResult['user'] = $userResult;
+        $searchResult['asset'] = $assetResult;
+        $searchResult['route'] = $routeResult;
+
+        return $searchResult;
+
+
+
+    }
     public function getAllCombination(){
 
         $Combinations = array();
@@ -81,9 +126,9 @@ class AssignDao{
 
         return $Result;
     }
-    public function getAsset(){
-        $this->_DB->doQuery("SELECT `company_name` , tbl_asset_type.type_name as typename FROM `tbl_assets` INNER JOIN tbl_asset_type
-            ON tbl_assets.at_id = tbl_asset_type.at_id;");
+    public function getAsset($id){
+        $this->_DB->doQuery("SELECT `company_name` , specs, tbl_asset_type.type_name as typename FROM `tbl_assets` INNER JOIN tbl_asset_type
+            ON tbl_assets.at_id = tbl_asset_type.at_id where tbl_assets.id ='$id';");
 
             $rows = $this->_DB->getAllRows();
 
@@ -229,6 +274,27 @@ class AssignDao{
 
                 return $fullname;
 
+            }
+            public function deleteCombination($Combination){
+
+                //beginning a transaction
+                $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+                //removing previous Positions
+
+                $SQL_delete = "DELETE from tbl_combination where id ='".$Combination->getCId()."'";
+                $SQL_delete = $this->_DB->doQuery($SQL_delete);
+
+
+                //closing the transaction
+                $this->_DB->getConnection()->commit();
+
+
+                $Result = new Result();
+                $Result->setIsSuccess(1);
+                $Result->setResultObject($SQL_delete);
+
+                return $Result;
             }
 
         }

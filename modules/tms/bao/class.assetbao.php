@@ -36,11 +36,13 @@ class AssetBao{
 
 
 	}
-	public function getAllAsset(){
+	public function getAllAsset($state){
 
 		$Result = new Result();
-		$Result = $this->_AssetDao->getAllAsset();
+		$Result = $this->_AssetDao->getAllAsset($state);
 		//print_r($Result);
+		if($state == 'none')
+			return $Result;
 		if(!$Result->getIsSuccess())
 			$Result->setResultObject("Database failure in AssetBao.createAsset()");
 

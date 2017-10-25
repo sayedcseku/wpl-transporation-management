@@ -142,13 +142,17 @@ include_once './common/class.common.php';
 
 </div>
 
+<div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
+    <b>Own Assets</b></div>
+<br>
 <div class="panel panel-body">
 
 <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
 <?php
 
+$state = 'own';
 
-$Result = $_AssetBao->getAllAsset();
+$Result = $_AssetBao->getAllAsset($state);
 
 //if DAO access is successful to load all the users then show them one by one
 if($Result->getIsSuccess()){
@@ -158,8 +162,6 @@ if($Result->getIsSuccess()){
     <tr style="background-color: rgba(7,71,166,0.62)">
         <th>Asset Type</th>
         <th>Company Name</th>
-        <th>isRented</th>
-        <th>Rent Cost</th>
         <th>Liscence No</th>
         <th>Edit</th>
         <th style="color: darkred">Delete</th>
@@ -175,17 +177,6 @@ if($Result->getIsSuccess()){
                 <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
             </td>
             <td><?php echo $Asset->getCompanyName(); ?></td>
-            <td>
-                <?php
-                if($Asset->getIsRented()=='true')
-                    echo "Yes";
-                    else
-                        echo "No";
-
-                    ?>
-            </td>
-
-            <td><?php echo $Asset->getRentCost(); ?></td>
             <td><?php echo $Asset->getLiscenceNo(); ?></td>
             <td>
                 <a href="?edit=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
@@ -207,3 +198,64 @@ else{
 ?>
 </table>
 </div>
+
+<div class="panel-heading text-center" style="background-color: rgba(17,71,166,10.62)">
+    <b>Hired Assets</b></div>
+<br>
+<div class="panel panel-body">
+
+    <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
+        <?php
+
+        $state = 'hired';
+
+        $Result = $_AssetBao->getAllAsset($state);
+
+        //if DAO access is successful to load all the users then show them one by one
+        if($Result->getIsSuccess()){
+
+            $AssetList = $Result->getResultObject();
+            ?>
+            <tr style="background-color: rgba(7,71,166,0.62)">
+                <th>Asset Type</th>
+                <th>Company Name</th>
+                <th>Rent Cost</th>
+                <th>Liscence No</th>
+                <th>Edit</th>
+                <th style="color: darkred">Delete</th>
+
+            </tr>
+            <?php
+            for($i = 0; $i < sizeof($AssetList); $i++) {
+                $Asset = $AssetList[$i];
+
+                ?>
+                <tr>
+                    <td>
+                        <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
+                    </td>
+                    <td><?php echo $Asset->getCompanyName(); ?></td>
+
+                    <td><?php echo $Asset->getRentCost(); ?></td>
+                    <td><?php echo $Asset->getLiscenceNo(); ?></td>
+                    <td>
+                        <a href="?edit=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to edit !'); " >edit</a>
+                    </td>
+                    <td>
+                        <a class="text-danger" href="?del=<?php echo $Asset->getId(); ?>" onclick="return confirm('sure to delete !'); " >delete</a>
+                    </td>
+                </tr>
+                <?php
+
+            }
+
+        }
+        else{
+
+            echo $Result->getResultObject(); //giving failure message
+        }
+
+        ?>
+    </table>
+</div>
+

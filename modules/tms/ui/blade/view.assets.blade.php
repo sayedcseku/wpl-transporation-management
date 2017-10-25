@@ -6,6 +6,7 @@ include_once '/../../bao/class.assetbao.php';
 
 
 $_AssetBao = new AssetBao();
+
 $_DB = DBUtil::getInstance();
 $_Log= LogUtil::getInstance();
 

@@ -71,14 +71,29 @@ class AssetDao{
         return $Result;
     }
 
-    public function getAllAsset(){
+    public function getAllAsset($state){
 
         $AssetList = array();
 
+        $check='none';
+        if($state =='own')
+            $check = 'false';
+        else if($state =='hired')
+            $check = 'true';
+        if($check!='none')
         $this->_DB->doQuery("SELECT * FROM tbl_assets inner JOIN tbl_asset_type on
+            tbl_assets.at_id =tbl_asset_type.at_id WHERE  isRented = '$check'");
+        else{
+            $this->_DB->doQuery("SELECT * FROM tbl_assets inner JOIN tbl_asset_type on
             tbl_assets.at_id =tbl_asset_type.at_id");
+            $rows = $this->_DB->getAllRows();
+
+            return $rows;
+        }
+
 
         $rows = $this->_DB->getAllRows();
+
 
         for($i = 0; $i < sizeof($rows); $i++) {
             $row = $rows[$i];
@@ -91,8 +106,7 @@ class AssetDao{
             $this->_Asset->setRentCost( $row['rent_cost'] );
             $this->_Asset->setLiscenceNo( $row['liscence_no'] );
             $this->_AssetType->setTypeName($row['type_name']);
-
-
+            $this->_AssetType->setSpecs($row['specs']);
 
 
             $AssetList[]=$this->_Asset;

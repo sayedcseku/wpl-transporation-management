@@ -186,17 +186,17 @@ include_once './common/class.common.php';
             <th style="color: darkred">Delete</th>
         </tr>
         <?php
-        $var1= $_AssignBao->getAsset();
+
         for($i = 0; $i < sizeof($Combinations); $i++) {
             $Combination = $Combinations[$i];
-
+            $var1= $_AssignBao->getAsset($Combination->getAssetId());
             ?>
             <tr>
                 <td>
-                    <a href="asset.php?edit=<?php echo $Combination->getAssetId() ?> "> <?php echo $var1[$i]['typename'] ?> </a>
+                    <a href="assets.php?edit=<?php echo $Combination->getAssetId() ?> "> <?php echo $var1[0]['typename'] ?> </a>
                 </td>
                 <td>
-                    <?php echo $var1[$i]['company_name'] ?>
+                    <?php echo $var1[0]['company_name'] ?>
                 </td>
                 <td>
                     <a href="user.php?edit=<?php echo $Combination->getDriverId() ?> "> <?php echo $_AssignBao->getUser($Combination->getDriverId()) ?> </a>
@@ -206,7 +206,7 @@ include_once './common/class.common.php';
                 </td>
 
                 <td>
-                    <a href="route.php?edit=<?php echo $Combination->getRouteId() ?> "> <?php echo $_AssignBao->getRoute($Combination->getRouteId()) ?> </a>
+                    <a href="routes.php?edit=<?php echo $Combination->getRouteId() ?> "> <?php echo $_AssignBao->getRoute($Combination->getRouteId()) ?> </a>
                 </td>
 
                 <td>

@@ -11,6 +11,17 @@ $_Log= LogUtil::getInstance();
 
 
 $globalUser = '';
+if(isset($_POST['search']))
+{
+    $searchToken = trim($_POST['txtSearch']);
+
+    $Result = $_AssignBao->searchEverything($searchToken);
+
+    print_r($Result);
+
+    //header("Location:".PageUtil::$COMBO_VIEW);
+
+}
 if(isset($_POST['save']))
 {
 	$Combination = new Combination();
@@ -27,6 +38,15 @@ if(isset($_POST['save']))
 
 	header("Location:".PageUtil::$COMBO);
 
+}
+if(isset($_GET['del']))
+{
+
+	$Combination = new Combination();
+	$Combination->setCId($_GET['del']);
+	$_AssignBao->deleteCombination($Combination); //reading the user object from the result object
+
+	header("Location:".PageUtil::$COMBO);
 }
 
 

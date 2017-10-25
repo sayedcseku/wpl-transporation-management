@@ -318,10 +318,7 @@
 						<!--<Link>new_asset.php</Link>-->
 						<Permissions>
 							<Permission>USER_R</Permission>
-							<Permission>ASSETS_C</Permission>
-							<Permission>ASSETS_R</Permission>
-							<Permission>ASSETS_U</Permission>
-							<Permission>ASSETS_D</Permission>
+
 						</Permissions>
 					</Menu>
 
@@ -349,6 +346,14 @@
 								<Permission>ASSETS_D</Permission>
 							</Permissions>
 						</Menu>
+						<Menu>
+							<ParentMenu>Asset Category</ParentMenu>
+							<Title>Show Assets</Title>
+							<Link>asset_details.php</Link>
+							<Permissions>
+								<Permission>USER_R</Permission>
+							</Permissions>
+						</Menu>
 
 						<Menu>
 							<ParentMenu>Transport</ParentMenu>
@@ -374,6 +379,15 @@
 								<Permission>ASSETS_D</Permission>
 							</Permissions>
 						</Menu>
+	<Menu>
+		<ParentMenu>Route category</ParentMenu>
+		<Title>Show Routes</Title>
+		<Link>route_details.php</Link>
+		<Permissions>
+			<Permission>USER_R</Permission>
+
+		</Permissions>
+	</Menu>
 
 						<Menu>
 							<ParentMenu>Transport</ParentMenu>
@@ -401,4 +415,56 @@
 							</Permissions>
 						</Menu>
 
+	<Menu>
+		<ParentMenu>Assign Resources</ParentMenu>
+		<Title>Show Bus/Transport Route Details</Title>
+		<Link>transport_route_details.php</Link>
+		<Permissions>
+			<Permission>USER_R</Permission>
+
+		</Permissions>
+	</Menu>
+
+						<Menu>
+							<ParentMenu>Transport</ParentMenu>
+							<Title>Route Map</Title>
+							<Permissions>
+								<Permission>USER_R</Permission>
+							</Permissions>
+
+						</Menu>
+
+						<Menu>
+							<ParentMenu>Route Map</ParentMenu>
+							<Title>Show Route Map</Title>
+							<Link>show_route.php</Link>
+
+							<Permissions>
+								<Permission>USER_R</Permission>
+							</Permissions>
+						</Menu>
+
+						<Menu>
+							<ParentMenu>Route Map</ParentMenu>
+							<Title>Manage Route Map</Title>
+							<Link>manage_route_map.php</Link>
+
+							<Permissions>
+								<Permission>USER_R</Permission>
+								<Permission>USER_R</Permission>
+								<Permission>ROUTES_C</Permission>
+								<Permission>ROUTES_R</Permission>
+								<Permission>ROUTES_U</Permission>
+								<Permission>ROUTES_D</Permission>
+								<Permission>ASSETS_C</Permission>
+								<Permission>ASSETS_R</Permission>
+								<Permission>ASSETS_U</Permission>
+								<Permission>ASSETS_D</Permission>
+								<Permission>MAP_C</Permission>
+								<Permission>MAP_R</Permission>
+								<Permission>MAP_U</Permission>
+								<Permission>MAP_D</Permission>
+
+							</Permissions>
+						</Menu>
 </Menus>

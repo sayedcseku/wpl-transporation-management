@@ -201,9 +201,14 @@ class PageUtil{
 
     public static $ASSET_NEW = 'new_asset.php';
     public static $ASSETS = 'assets.php';
+    public static $ASSETS_VIEW = 'asset_details.php';
     public static $ROUTES = 'routes.php';
+    public static $ROUTES_VIEW = 'route_details.php';
     public static $COMBO = 'transport_route.php';
+    public static $COMBO_VIEW = 'transport_route_details.php';
     public static $ASSET_TYPE = 'asset_type.php';
+    public static $MAP = 'show_route.php';
+    public static $MANAGE_MAP = 'manage_route_map.php';
 
 
 
@@ -253,10 +258,16 @@ class RouteUtil{
          self::$s_Routes[PageUtil::$USER_FORGOT_PASSWORD] =   "modules/user/ui/view.forgot_password.php";
 
          self::$s_Routes[PageUtil::$ASSETS] =   "/modules/tms/ui/view.assets.php";
+       self::$s_Routes[PageUtil::$ASSETS_VIEW] =   "/modules/tms/ui/view.asset_view.php";
 
           self::$s_Routes[PageUtil::$ROUTES] =   "/modules/tms/ui/view.routes.php";
+       self::$s_Routes[PageUtil::$ROUTES_VIEW] =   "/modules/tms/ui/view.route_view.php";
           self::$s_Routes[PageUtil::$COMBO] =   "/modules/tms/ui/view.assignment.php";
+       self::$s_Routes[PageUtil::$COMBO_VIEW] =   "/modules/tms/ui/view.assignment_view.php";
           self::$s_Routes[PageUtil::$ASSET_TYPE] =   "/modules/tms/ui/view.assettype.php";
+          self::$s_Routes[PageUtil::$MAP] =   "/modules/tms/ui/view.show_map.php";
+       self::$s_Routes[PageUtil::$MANAGE_MAP] =   "/modules/tms/ui/view.manage_map.php";
+
 
         //the page not found will redirect to error page
          self::$s_Routes[PageUtil::$ERROR] = "modules/dashboard/ui/view.error.php";

@@ -44,6 +44,27 @@
 		<category>ROUTES CATEGORY</category>
 	</permission>
 
+	<permission>
+		<id>MAP_C</id>
+		<name>MAP_C</name>
+		<category>MAP CATEGORY</category>
+	</permission>
+	<permission>
+		<id>MAP_R</id>
+		<name>MAP_R</name>
+		<category>MAP CATEGORY</category>
+	</permission>
+	<permission>
+		<id>MAP_U</id>
+		<name>MAP_U</name>
+		<category>MAP CATEGORY</category>
+	</permission>
+	<permission>
+		<id>MAP_D</id>
+		<name>MAP_D</name>
+		<category>MAP CATEGORY</category>
+	</permission>
+
 	<!-- Driver& Helper Assignment CATEGORY Category -->
 
 	<!-- DISCUSSION CATEGORY Category -->

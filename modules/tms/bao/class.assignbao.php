@@ -12,6 +12,15 @@ class AssignBao{
         $this->_AssignDao = new AssignDao();
 
     }
+
+    public function searchEverything($searchToken)
+    {
+        $Result = $this->_AssignDao->searchEverything($searchToken);
+
+        if(isset($Result))
+         return $Result;
+
+    }
     public function newAssignRequest($Combination)
 	{
 
@@ -34,10 +43,10 @@ class AssignBao{
         return $Result;
 
 	}
-    public function getAsset(){
+    public function getAsset($id){
 
 		$Result = new Result();
-		$Result = $this->_AssignDao->getAsset();
+		$Result = $this->_AssignDao->getAsset($id);
 
         return $Result;
 
@@ -107,6 +116,18 @@ class AssignBao{
 
         if(!isset($Result))
         $Result->setResultObject("Database failure in _AssignDao.getRoute()");
+
+        return $Result;
+
+
+    }
+    public function deleteCombination($Combination)
+    {
+        //$Result = new Result();
+        $Result = $this->_AssignDao->deleteCombination($Combination);
+
+        if(!isset($Result))
+        $Result->setResultObject("Database failure in _AssignDao.deleteCombination($Combination)");
 
         return $Result;
 
