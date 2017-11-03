@@ -54,7 +54,7 @@
   <body>
     <div id="map"></div>
     <div id="right-panel">
-    <div>
+    <div class ="container">
     <b>Start:</b>
     <select id="start">
       <option value="Halifax, NS">Halifax, NS</option>
@@ -141,6 +141,7 @@
         });
       }
     </script>
+    <script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc9UlB8cV9pkmxlDGICaTNwHrvh9qu0kw&callback=initMap">
     </script>

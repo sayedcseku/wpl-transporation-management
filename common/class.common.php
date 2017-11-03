@@ -163,6 +163,14 @@ class PermissionUtil{
     public static $ASSET_U='ASSET_U';
     public static $ASSET_D='ASSET_D';
 
+    public static $ROUTES_C= 'ROUTES_C';
+    public static $ROUTES_R= 'ROUTES_R';
+    public static $ROUTES_U= 'ROUTES_U';
+    public static $ROUTES_D= 'ROUTES_D';
+
+    
+
+
 
 }
 

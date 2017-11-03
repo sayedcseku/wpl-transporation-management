@@ -59,7 +59,6 @@ include_once COMMON.'class.common.php';
     <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
     <?php
 
-
     $Result = $_AssetBao->getAllAssetType();
 
     //if DAO access is successful to load all the users then show them one by one

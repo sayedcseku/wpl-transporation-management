@@ -18,8 +18,8 @@ include_once './common/class.common.php';
 		<form method="post" class="form-horizontal">
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="startPoint">Starting Point:</label>
-              	<div class="col-sm-6">
+              	<label class="control-label col-sm-2" for="startPoint">Starting Point:</label>
+              	<div class="col-sm-10">
 
   				  <input type="text" name="startPoint" class="form-control" placeholder="Starting Point" value="<?php
   					if(isset($_GET['edit'])) echo $globalUser->getStart();  ?>"/>
@@ -29,16 +29,16 @@ include_once './common/class.common.php';
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="destination">Destination:</label>
-              	<div class="col-sm-6">
+              	<label class="control-label col-sm-2" for="destination">Destination:</label>
+              	<div class="col-sm-10">
                     <input type="text" name="destination" class="form-control" placeholder="Destination" value="<?php
     					if(isset($_GET['edit'])) echo $globalUser->getDest();  ?>"/>
 				</div>
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="viaPoints">Via:</label>
-              	<div class="col-sm-6">
+              	<label class="control-label col-sm-2" for="viaPoints">Via:</label>
+              	<div class="col-sm-10">
                     <input type="text" name="viaPoints" class="form-control" placeholder="Via" value="<?php
     					if(isset($_GET['edit'])) echo $globalUser->getVia();  ?>" required />
 
@@ -72,7 +72,6 @@ include_once './common/class.common.php';
 </div>
 
 <div class="panel panel-body">
-
 <table class="table table-bordered table-striped" style="border: 1px solid;border-color: rgba(7,71,166,0.62)">
 <?php
 

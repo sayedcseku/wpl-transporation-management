@@ -21,7 +21,6 @@ class AssetBao{
 			$Result->setResultObject("Database failure in AssetBao.newAssetTypeRequest()");
 
 		return $Result;
-
 	}
 
 	public function newAssetRequest($Asset){

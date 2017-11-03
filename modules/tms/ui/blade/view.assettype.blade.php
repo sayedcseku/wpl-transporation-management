@@ -23,7 +23,6 @@ if(isset($_POST['request']))
 	if($Result->getIsSuccess())
 		echo '<strong>'.$Result->getResultObject().'</strong>';
 
-        echo "hello";
 	header("Location:".PageUtil::$ASSET_TYPE);
 
 }
