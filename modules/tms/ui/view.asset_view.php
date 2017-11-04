@@ -1,6 +1,6 @@
 <?php
 include_once 'blade/view.assets.blade.php';
-include_once './common/class.common.php';
+include_once COMMON.'class.common.php';
 
 ?>
 

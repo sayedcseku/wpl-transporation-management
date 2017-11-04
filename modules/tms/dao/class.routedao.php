@@ -1,16 +1,18 @@
 <?php
-include_once './common/class.common.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once UTILITY.'class.util.php';
 
 class RouteDao{
 
     private $_DB;
     private $_Route;
+    private $_GeoLocation;
 
     function RouteDao(){
 
         $this->_DB = DBUtil::getInstance();
         $this->_Route = new Route();
+        $this->_GeoLocation = new GeoLocation();
 
     }
 
@@ -155,6 +157,105 @@ class RouteDao{
 
         return $Result;
     }
+
+    public function setLocations($Points){
+
+        $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+        for ($i=0; $i < sizeof($Points); $i++) {
+            $SQL = "INSERT IGNORE INTO tbl_geo_locations
+                    (location_name)
+                    VALUES
+                        ('$Points[$i]');";
+
+
+            //beginning a transaction
+
+            //creating the user
+            $SQL = $this->_DB->doQuery($SQL);
+
+        }
+
+
+
+        //closing the transaction
+        $this->_DB->getConnection()->commit();
+        $Result = new Result();
+        $Result->setIsSuccess(1);
+        $Result->setResultObject($SQL);
+
+        return $Result;
+
+
+
+    }
+    public function getAllPoint(){
+
+        $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+            $SQL = "SELECT * FROM `tbl_geo_locations` ";
+
+            $SQL = $this->_DB->doQuery($SQL);
+
+            $rows = $this->_DB->getAllRows();
+
+
+
+            $this->_DB->getConnection()->commit();
+
+
+            return $rows;
+
+
+
+	}
+    public function getPoint($id){
+
+        $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+            $SQL = "SELECT * FROM `tbl_geo_locations` where id = $id";
+
+            $SQL = $this->_DB->doQuery($SQL);
+
+            $rows = $this->_DB->getTopRow();
+
+
+
+            $this->_DB->getConnection()->commit();
+
+
+            return $rows;
+
+
+
+	}
+    public function updatePoint($id,$Point,$lat,$lng){
+        $SQL = "UPDATE tbl_geo_locations SET location_name='".$Point."',
+			latitude='".$lat."',
+			longitude='".$lng."'
+
+			WHERE id='".$id."'";
+
+		//beginning a transaction
+		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+        echo $id.' '. $Point.' '. $lat.' '.$lng;
+		//updating the user
+		$SQL = $this->_DB->doQuery($SQL);
+        echo "string";
+
+
+		//closing the transaction
+		$this->_DB->getConnection()->commit();
+
+
+
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($SQL);
+
+		return $Result;
+
+    }
+
 
 }
 

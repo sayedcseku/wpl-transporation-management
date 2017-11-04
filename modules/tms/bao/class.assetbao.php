@@ -1,6 +1,6 @@
 <?php
-include_once './util/class.util.php';
-include_once '/../dao/class.assetdao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_TMS.'dao/class.assetdao.php';
 
 class AssetBao{
 	private $_DB;

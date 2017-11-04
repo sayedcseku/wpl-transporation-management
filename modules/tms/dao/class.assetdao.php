@@ -1,6 +1,6 @@
 <?php
-include_once './common/class.common.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once UTILITY.'class.util.php';
 
 class AssetDao{
 
@@ -270,7 +270,7 @@ class AssetDao{
 
         //removing previous Positions
 
-        $SQL_delete = "DELETE from tbl_assets where id ='".$AssetTy->getId()."'";
+        $SQL_delete = "DELETE from tbl_assets where id ='".$Asset->getId()."'";
         $SQL_delete = $this->_DB->doQuery($SQL_delete);
 
 

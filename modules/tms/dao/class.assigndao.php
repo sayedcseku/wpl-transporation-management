@@ -1,7 +1,7 @@
 <?php
 
-include_once './common/class.common.php';
-include_once './util/class.util.php';
+include_once COMMON.'class.common.php';
+include_once UTILITY.'class.util.php';
 include_once 'class.assetdao.php';
 
 class AssignDao{

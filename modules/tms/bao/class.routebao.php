@@ -1,6 +1,6 @@
 <?php
-include_once './util/class.util.php';
-include_once '/../dao/class.routedao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_TMS.'dao/class.routedao.php';
 
 class RouteBao{
 	private $_DB;
@@ -67,6 +67,46 @@ class RouteBao{
 
 		return $Result;
 
+	}
+	public function setLocations($Points){
+
+		$Result = new Result();
+		$Result = $this->_RouteDao->setLocations($Points);
+
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in AssetBao.setLocations($Points)");
+
+		return $Result;
+
+	}
+	public function getAllPoint(){
+
+		$Result = new Result();
+		$Result = $this->_RouteDao->getAllPoint();
+
+		if(!isset($Result))
+			$Result->setResultObject("Database failure in RouteBao.getAllPoint()");
+
+		return $Result;
+
+	}
+	public function getPoint($id){
+		$Result = new Result();
+		$Result = $this->_RouteDao->getPoint($id);
+
+		if(!isset($Result))
+			$Result->setResultObject("Database failure in RouteBao.getPoint($id)");
+
+		return $Result;
+	}
+	public function updatePoint($id,$Point,$lat,$lng){
+		$Result = new Result();
+		$Result = $this->_RouteDao->updatePoint($id,$Point,$lat,$lng);
+
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in RouteBao.updatePoint($id,$Point,$lat,$lng)");
+
+		return $Result;
 	}
 }
 

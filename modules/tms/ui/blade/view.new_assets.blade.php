@@ -1,6 +1,6 @@
 <?php
-include_once './util/class.util.php';
-include_once '/../../bao/class.assetbao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_TMS.'bao/class.assetbao.php';
 
 $_AssetBao = new AssetBao();
 $_DB = DBUtil::getInstance();

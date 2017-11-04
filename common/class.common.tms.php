@@ -461,5 +461,108 @@ class AssetType{
     }
 
 }
+class GeoLocation{
+    private $_g_id;
+    private $_location_name;
+    private $_latitude;
+    private $_longitude;
 
+    /**
+     * Get the value of Location Name
+     *
+     * @return mixed
+     */
+    public function getLocationName()
+    {
+        return $this->_location_name;
+    }
+
+    /**
+     * Set the value of Location Name
+     *
+     * @param mixed _location_name
+     *
+     * @return self
+     */
+    public function setLocationName($_location_name)
+    {
+        $this->_location_name = $_location_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Latitude
+     *
+     * @return mixed
+     */
+    public function getLatitude()
+    {
+        return $this->_latitude;
+    }
+
+    /**
+     * Set the value of Latitude
+     *
+     * @param mixed _latitude
+     *
+     * @return self
+     */
+    public function setLatitude($_latitude)
+    {
+        $this->_latitude = $_latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Longitude
+     *
+     * @return mixed
+     */
+    public function getLongitude()
+    {
+        return $this->_longitude;
+    }
+
+    /**
+     * Set the value of Longitude
+     *
+     * @param mixed _longitude
+     *
+     * @return self
+     */
+    public function setLongitude($_longitude)
+    {
+        $this->_longitude = $_longitude;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of Set the value of Specs
+     *
+     * @return mixed
+     */
+    public function getGId()
+    {
+        return $this->_g_id;
+    }
+
+    /**
+     * Set the value of Set the value of Specs
+     *
+     * @param mixed _g_id
+     *
+     * @return self
+     */
+    public function setGId($_g_id)
+    {
+        $this->_g_id = $_g_id;
+
+        return $this;
+    }
+
+}
 ?>

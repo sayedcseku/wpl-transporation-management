@@ -1,7 +1,6 @@
 <?php
 include_once 'blade/view.assignment.blade.php';
-//include_once 'blade/view.asset.blade.php';
-include_once './common/class.common.php';
+include_once COMMON.'class.common.php';
 ?>
 <div class="panel-heading text-center" style="background-color: rgba(7,71,166,0.62)">
     <b>Search Box</b></div>

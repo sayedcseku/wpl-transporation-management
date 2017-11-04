@@ -1,10 +1,12 @@
 <?php
-include_once './util/class.util.php';
-include_once '/../../bao/class.routebao.php';
+include_once UTILITY.'class.util.php';
+include_once MODULES_TMS.'bao/class.routebao.php';
 
 $_RouteBao = new RouteBao();
 $_DB = DBUtil::getInstance();
 $_Log= LogUtil::getInstance();
+
+$globalUser = '';
 
 if(isset($_POST['request']))
 {
@@ -51,6 +53,22 @@ if(isset($_GET['del']))
 	$_RouteBao->deleteRoute($Route); //reading the user object from the result object
 
 	header("Location:".PageUtil::$ROUTES);
+}
+if(isset($_GET['editPoint']))
+{
+	$id = $_GET['editPoint'];
+	$globalUser = $_RouteBao->getPoint($id); //reading the user object from the result object
+}
+
+if(isset($_POST['updatePoint']))
+{
+	$id = $_GET['editPoint'];
+    $Point = $_POST['Point'];
+    $lat = $_POST['latitude'];
+    $lng = $_POST['longitude'];
+
+	$Result = $_RouteBao->updatePoint($id,$Point,$lat,$lng);
+
 }
 
 echo '<br> log:: exit blade.route.php';

@@ -1,6 +1,6 @@
 <?php
 include_once 'blade/view.assets.blade.php';
-include_once './common/class.common.php';
+include_once COMMON.'class.common.php';
 
 ?>
 
@@ -35,7 +35,7 @@ include_once './common/class.common.php';
 
                             $var = $var. '<option value="'.$AssetType->getAtId().'"';
 
-                            if(isset($_GET['edit'])) {
+                            if(isset($_GET['edit']) && $globalUser->getAtId()==$AssetType->getAtId()) {
                                 $var = $var.' selected="selected"';
                             }
 
@@ -170,11 +170,11 @@ if($Result->getIsSuccess()){
     <?php
     for($i = 0; $i < sizeof($AssetList); $i++) {
         $Asset = $AssetList[$i];
-        
+
         ?>
         <tr>
             <td>
-                <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
+                <a href="asset_type.php?edit=<?php echo $Asset->getAtId() ?> "> <?php echo $Asset->getAtId() ?> </a>
             </td>
             <td><?php echo $Asset->getCompanyName(); ?></td>
             <td><?php echo $Asset->getLiscenceNo(); ?></td>
@@ -232,7 +232,7 @@ else{
                 ?>
                 <tr>
                     <td>
-                        <a href="asset_type.php?edit=<?php echo $AssetType->getAtId() ?> "> <?php echo $AssetType->getAtId() ?> </a>
+                        <a href="asset_type.php?edit=<?php echo $Asset->getAtId() ?> "> <?php echo $Asset->getAtId() ?> </a>
                     </td>
                     <td><?php echo $Asset->getCompanyName(); ?></td>
 
@@ -258,4 +258,3 @@ else{
         ?>
     </table>
 </div>
-

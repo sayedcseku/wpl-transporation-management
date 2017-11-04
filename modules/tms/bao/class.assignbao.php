@@ -1,5 +1,5 @@
 <?php
-include_once './util/class.util.php';
+include_once UTILITY.'class.util.php';
 include_once MODULES_TMS.'dao/class.assigndao.php';
 
 class AssignBao{
