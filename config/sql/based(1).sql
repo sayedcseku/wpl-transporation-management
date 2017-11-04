@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2017 at 03:21 PM
+-- Generation Time: Nov 04, 2017 at 05:53 AM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -53,7 +53,7 @@ CREATE TABLE `routes` (
 INSERT INTO `routes` (`id`, `start`, `dest`, `via`) VALUES
 (7, 'Hadi Cottor(2:00 PM)', 'Khalishpur(3:30 PM)', 'Gollamari(2:10 PM) - Sonadanga(2:15 PM) - Notun Rasta(3:00 PM)'),
 (4, 'Hadi Cottor(5:00 PM)', 'Rupsa(6:00 PM)', 'Moyla Pota(5:30 PM)'),
-(5, 'Khulna', 'Dhaka', 'Jessore - Faridpur - Jahangirnagar'),
+(5, 'Khulna (5:00 AM)', 'Dhaka (2:00 PM)', 'Jessore(6:30 PM) - Faridpur(9:00 AM) - Jahangirnagar(12:00 PM)'),
 (6, 'Khulna University', 'Khalishpur', 'Gollamari - Sonadanga - Boyra');
 
 -- --------------------------------------------------------
@@ -83,8 +83,7 @@ INSERT INTO `tbl_assets` (`id`, `at_id`, `company_name`, `isRented`, `rent_cost`
 (9, 2, 'AR Rent-a-car', 'true', 1500, '25X9BNM7 '),
 (10, 3, 'Aj Group', 'true', 20005, '25X9BNM89'),
 (11, 3, 'KU', 'false', 0, '25X9BNM45'),
-(12, 2, 'Green Line', 'true', 15000, '25X9BNM'),
-(13, 2, 'Hanif', 'true', 15000, 'k14j69l96');
+(12, 2, 'Green Line', 'true', 15000, '25X9BNM');
 
 -- --------------------------------------------------------
 
@@ -127,7 +126,7 @@ CREATE TABLE `tbl_combination` (
 
 INSERT INTO `tbl_combination` (`id`, `asset_id`, `route_id`, `driver_id`, `helper_id`) VALUES
 (1, 5, 4, 'driver_1701@test.com', 'helper1701@test.com'),
-(2, 13, 7, 'driver_1702@test.com', 'helper1702@test.com');
+(2, 12, 7, 'driver_1702@test.com', 'helper1702@test.com');
 
 -- --------------------------------------------------------
 
@@ -223,6 +222,38 @@ INSERT INTO `tbl_discussion_comment` (`CommentID`, `DiscussionID`, `Comment`, `C
 ('{1634B01B-5F82-43EF-96F8-E6149F488424}', '{C9FB74F8-8341-4706-BE40-93BFDC3444D0}', 'it is PIE', 'mkazi078@uottawa.ca', '0000-00-00 00:00:00', NULL),
 ('{550A15FC-06B8-43DF-83EE-097E35920170}', '{C9FB74F8-8341-4706-BE40-93BFDC3444D0}', 'little difficult', 'mohidul@gmail.com', '0000-00-00 00:00:00', NULL),
 ('{A15517C2-883F-4E5E-B0AC-9A1DB556741F}', '{C9FB74F8-8341-4706-BE40-93BFDC3444D0}', 'Polymorphism, inheritence, encapsulation', 'mkazi078@uottawa.ca', '0000-00-00 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_geo_locations`
+--
+
+CREATE TABLE `tbl_geo_locations` (
+  `id` int(11) NOT NULL,
+  `location_name` varchar(50) NOT NULL,
+  `latitude` text,
+  `longitude` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_geo_locations`
+--
+
+INSERT INTO `tbl_geo_locations` (`id`, `location_name`, `latitude`, `longitude`) VALUES
+(2, 'Gollamari', NULL, NULL),
+(3, 'Hadi Cottor', NULL, NULL),
+(4, 'Khalishpur', NULL, NULL),
+(5, 'Khulna', NULL, NULL),
+(6, 'Khulna University', NULL, NULL),
+(7, 'Moyla Pota', NULL, NULL),
+(8, 'Notun Rasta', NULL, NULL),
+(9, 'Rupsa', NULL, NULL),
+(10, 'Sonadanga', '22.8167', '89.55'),
+(301, 'Dhaka', NULL, NULL),
+(302, 'Faridpur', NULL, NULL),
+(305, 'Jahangirnagar', NULL, NULL),
+(306, 'Jessore', '21.8167', '91.10');
 
 -- --------------------------------------------------------
 
@@ -780,6 +811,13 @@ ALTER TABLE `tbl_discussion_comment`
   ADD PRIMARY KEY (`CommentID`);
 
 --
+-- Indexes for table `tbl_geo_locations`
+--
+ALTER TABLE `tbl_geo_locations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `location_name` (`location_name`);
+
+--
 -- Indexes for table `tbl_permission`
 --
 ALTER TABLE `tbl_permission`
@@ -865,6 +903,11 @@ ALTER TABLE `tbl_asset_type`
 --
 ALTER TABLE `tbl_combination`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_geo_locations`
+--
+ALTER TABLE `tbl_geo_locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=470;
 --
 -- AUTO_INCREMENT for table `tbl_role_permission`
 --
