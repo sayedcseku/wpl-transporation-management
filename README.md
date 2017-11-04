@@ -31,7 +31,7 @@ Version: 0.2 (beta)
 
 Framework Author & Instructor
 ------------
-Dr. KAZI MASUDUL ALAM
-Assistant Professor
-CSE Discipline, Khulna University
+Dr. KAZI MASUDUL ALAM <br>
+Assistant Professor <br>
+CSE Discipline, Khulna University <br>
 Bangladesh
